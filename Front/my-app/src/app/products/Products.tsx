@@ -1,11 +1,15 @@
+//asests
+import { products } from "@/helpers/mockProducts";
+
+//componets
 import Card from "@/Componets/Card";
 
 const Products: React.FC = () => {
   return (
     <div>
-      <Card></Card>
-      <Card></Card>
-      <Card></Card>
+      {products.map((product) => (
+        <Card key={product.id}></Card>
+      ))}
     </div>
   );
 };
