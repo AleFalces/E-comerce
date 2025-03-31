@@ -7,8 +7,8 @@ import Card from "@/Componets/Card";
 const Products: React.FC = () => {
   return (
     <div>
-      {products.map((product) => (
-        <Card key={product.id}></Card>
+      {products.map((prod) => (
+        <Card key={prod.id} product={prod}></Card>
       ))}
     </div>
   );
