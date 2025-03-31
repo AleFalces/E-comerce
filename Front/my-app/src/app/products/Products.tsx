@@ -6,7 +6,7 @@ import Card from "@/Componets/Card";
 
 const Products: React.FC = () => {
   return (
-    <div>
+    <div className="grid  grid-cols-4 gap-4">
       {products.length ? (
         products.map((product) => <Card key={product.id} product={product} />)
       ) : (

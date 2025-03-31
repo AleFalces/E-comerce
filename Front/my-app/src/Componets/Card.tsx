@@ -2,7 +2,7 @@ import { CardProps } from "@/helpers/mockProducts";
 
 const Card: React.FC<CardProps> = ({ product }) => {
   return (
-    <div>
+    <div className="border-4 border-double">
       <div>name: {product.name}</div>
       <div>price: {product.price}</div>
       <div>{product.description}</div>
