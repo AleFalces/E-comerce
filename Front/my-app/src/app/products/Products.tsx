@@ -7,9 +7,11 @@ import Card from "@/Componets/Card";
 const Products: React.FC = () => {
   return (
     <div>
-      {products.map((prod) => (
-        <Card key={prod.id} product={prod}></Card>
-      ))}
+      {products.length ? (
+        products.map((product) => <Card key={product.id} product={product} />)
+      ) : (
+        <p>No hay productos disponibles</p>
+      )}
     </div>
   );
 };

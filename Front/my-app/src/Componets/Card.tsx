@@ -1,10 +1,6 @@
 import { CardProps } from "@/helpers/mockProducts";
 
 const Card: React.FC<CardProps> = ({ product }) => {
-  if (!product) {
-    return <div>No hay producto disponible</div>;
-  }
-
   return (
     <div>
       <div>name: {product.name}</div>

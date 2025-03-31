@@ -8,6 +8,10 @@ export interface IProduct {
   stock: number;
 }
 
+export interface CardProps {
+  product: IProduct; // Asegúrate de que IProduct esté definido correctamente
+}
+
 export const products: IProduct[] = [
   {
     id: 1,
