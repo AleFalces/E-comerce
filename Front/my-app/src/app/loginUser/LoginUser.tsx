@@ -14,7 +14,6 @@ const LoginUser: React.FC = () => {
       ...formData,
       [name]: value,
     });
-    console.log(formData);
   };
 
   const handlerSumbit = (event: React.FormEvent<HTMLFormElement>) => {
