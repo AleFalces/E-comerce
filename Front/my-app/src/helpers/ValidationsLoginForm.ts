@@ -3,7 +3,11 @@ import { LoginDTO, LoginFormErrorsDto } from "@/interfaces/userInterface";
 const validatelogin = (state: LoginDTO) => {
   const errors: LoginFormErrorsDto = {};
 
-  if (!state.email.trim()) errors.email = "Username is required";
+  if (!state.email.trim()) {
+    errors.email = "Email is required";
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email)) {
+    errors.email = "Invalid email format";
+  }
 
   if (!state.password) {
     errors.password = "Password is required";
