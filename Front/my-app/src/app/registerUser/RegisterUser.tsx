@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
+import { RegisterDTO } from "../../../interfaces/userInterface";
 
 const RegisterUser: React.FC = () => {
-  const [registerData, SetRegisterData] = useState({
+  const [registerData, SetRegisterData] = useState<RegisterDTO>({
     name: "",
     email: "",
     adress: "",
-    phone: "",
+    phone: 0,
     password: "",
   });
 
@@ -26,7 +27,7 @@ const RegisterUser: React.FC = () => {
   };
 
   return (
-    <div className="w-full flex flex-col aling-center bg-amber-400">
+    <div className="flex flex-col aling-center bg-amber-400 ">
       <form onSubmit={handlerSumbit}>
         <div>
           <label>Name</label>

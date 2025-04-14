@@ -1,9 +1,10 @@
 "use client";
 
 import { useState } from "react";
+import { LoginDTO } from "../../../interfaces/userInterface";
 
 const LoginUser: React.FC = () => {
-  const [formData, SetFormdata] = useState({
+  const [formData, SetFormdata] = useState<LoginDTO>({
     usernmame: "",
     password: "",
   });
@@ -22,7 +23,7 @@ const LoginUser: React.FC = () => {
   };
 
   return (
-    <div className="bg-amber-600">
+    <div className=" felx flex-colum w-800 bg-amber-600">
       <form onSubmit={handlerSumbit}>
         <label> Username: </label>
         <input
