@@ -1,11 +1,15 @@
+import Link from "next/link";
+
 const Navbar: React.FC = () => {
   return (
     <div className="flex justify-around">
-      <div>Img</div>
-      <div>Home</div>
-      <div>Products</div>
-      <div>AboutUs</div>
-      <div>user</div>
+      <Link href="/">
+        <div>Img</div>
+      </Link>
+      <Link href="/">Home</Link>
+      <Link href="/products">Products</Link>
+      <Link href="/about"> About Us</Link>
+      <Link href="/loginUser"> User</Link>
     </div>
   );
 };
