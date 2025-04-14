@@ -1,14 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { LoginDTO } from "../../../interfaces/userInterface";
-import { loginUserService } from "../../../services/userServices";
+import { LoginDTO, LoginFormErrorsDto } from "../../interfaces/userInterface";
+import { loginUserService } from "../../services/userServices";
+import validatelogin from "@/helpers/ValidationsLoginForm";
 
 const LoginUser: React.FC = () => {
   const [formData, SetFormdata] = useState<LoginDTO>({
     email: "",
     password: "",
   });
+
+  const [errors, setErrors] = useState<LoginFormErrorsDto>({});
 
   const handlerImput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -20,12 +23,17 @@ const LoginUser: React.FC = () => {
 
   const handlerSumbit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(formData);
+
+    const validationErrors = validatelogin(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
     loginUserService(formData);
   };
 
   return (
-    <div className=" felx flex-colum w-800 bg-amber-600">
+    <div className=" felx flex-colum w-800 bg-auto">
       <form onSubmit={handlerSumbit}>
         <label> Email: </label>
         <input
@@ -33,16 +41,24 @@ const LoginUser: React.FC = () => {
           name="email"
           onChange={handlerImput}
           value={formData.email}
-          required
+          className={`border p-2 rounded ${
+            errors.email ? "border-red-500" : "border-gray-300"
+          }`}
         />
+        {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>}
         <label> Password: </label>
         <input
           type="password"
           name="password"
           onChange={handlerImput}
           value={formData.password}
-          required
+          className={`border p-2 rounded ${
+            errors.password ? "border-red-500" : "border-gray-300"
+          }`}
         />
+        {errors.password && (
+          <p className="text-red-600 text-sm">{errors.password}</p>
+        )}
         <button type="submit">Login</button>
       </form>
     </div>

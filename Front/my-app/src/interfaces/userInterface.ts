@@ -10,3 +10,8 @@ export interface RegisterDTO {
   phone: string;
   password: string;
 }
+
+export interface LoginFormErrorsDto {
+  email?: string;
+  password?: string;
+}

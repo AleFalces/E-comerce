@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { RegisterDTO } from "../../../interfaces/userInterface";
-import { registerUserService } from "../../../services/userServices";
+import { RegisterDTO } from "../../interfaces/userInterface";
+import { registerUserService } from "../../services/userServices";
 
 const RegisterUser: React.FC = () => {
   const [registerData, SetRegisterData] = useState<RegisterDTO>({
