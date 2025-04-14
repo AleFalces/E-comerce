@@ -1,13 +1,14 @@
 "use client";
 import { useState } from "react";
 import { RegisterDTO } from "../../../interfaces/userInterface";
+import { registerUserService } from "../../../services/userServices";
 
 const RegisterUser: React.FC = () => {
   const [registerData, SetRegisterData] = useState<RegisterDTO>({
     name: "",
     email: "",
-    adress: "",
-    phone: 0,
+    address: "",
+    phone: "",
     password: "",
   });
 
@@ -21,9 +22,7 @@ const RegisterUser: React.FC = () => {
   };
   const handlerSumbit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    alert(
-      `name: ${registerData.name} email: ${registerData.email} and  ${registerData.adress} and ${registerData.password}, email: ${registerData.phone}`
-    );
+    registerUserService(registerData);
   };
 
   return (
@@ -42,7 +41,7 @@ const RegisterUser: React.FC = () => {
         <div>
           <label>Phone</label>
           <input
-            type="number"
+            type="text"
             name="phone"
             value={registerData.phone}
             onChange={handlerImput}
@@ -50,11 +49,11 @@ const RegisterUser: React.FC = () => {
           />
         </div>
         <div>
-          <label>Adress</label>
+          <label>Address</label>
           <input
             type="text"
-            name="adress"
-            value={registerData.adress}
+            name="address"
+            value={registerData.address}
             onChange={handlerImput}
             required
           />

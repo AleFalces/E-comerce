@@ -4,12 +4,12 @@ import { products } from "@/helpers/mockProducts";
 //componets
 import Card from "@/Componets/Card";
 
-const SlugProducts: React.FC = ({ params }) => {
+const SlugProducts: React.FC = () => {
   return (
     <div>
-      Soy el detalle:{params.slug}
+      Soy el detalle:
       {products.map((product) => (
-        <Card key={product.id}></Card>
+        <Card key={product.id} product={product}></Card>
       ))}
     </div>
   );
