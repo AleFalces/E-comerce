@@ -13,11 +13,19 @@ export const loginUserService = async (loginData: LoginDTO) => {
 };
 
 export const registerUserService = async (userdata: RegisterDTO) => {
-  console.log(userdata);
   try {
     const response = await apiServices.post(`${path}/register`, userdata);
     return response.data;
   } catch (error) {
     handleAxiosError(error, "Error en el registro");
+  }
+};
+
+export const getUserOrders = async (userId: number) => {
+  try {
+    const response = await apiServices.post(`${path}/orders`, userId);
+    return response.data;
+  } catch (error) {
+    handleAxiosError(error, "Orders error");
   }
 };
