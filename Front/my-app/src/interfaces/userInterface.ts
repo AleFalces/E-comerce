@@ -1,9 +1,9 @@
-export interface LoginDTO {
+export interface ILoginDTO {
   email: string;
   password: string;
 }
 
-export interface RegisterDTO {
+export interface IRegisterDTO {
   name: string;
   email: string;
   address: string;
@@ -12,12 +12,12 @@ export interface RegisterDTO {
   Cpassword: string;
 }
 
-export interface LoginFormErrorsDto {
+export interface ILoginFormErrorsDto {
   email?: string;
   password?: string;
 }
 
-export interface RegisterErrors {
+export interface IRegisterErrors {
   name?: string;
   email?: string;
   address?: string;
