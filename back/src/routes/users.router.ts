@@ -11,7 +11,7 @@ usersRouter.post("/register", validateUserRegister, registerUser);
 
 usersRouter.post("/login", validateUserLogin, login);
 
-usersRouter.get("/orders", checkLogin, async (req: Request, res: Response) => {
+usersRouter.post("/orders", checkLogin, async (req: Request, res: Response) => {
   const { userId } = req.body;
   const orders = await OrderRepository.find({
     relations: ["products"],
