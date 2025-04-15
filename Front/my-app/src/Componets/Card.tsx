@@ -1,6 +1,6 @@
 import { CardProps } from "@/helpers/mockProducts";
 
-const Card: React.FC<CardProps> = ({ product }) => {
+export const Card: React.FC<CardProps> = ({ product }) => {
   return (
     <div className="border-4 border-double">
       <div>name: {product.name}</div>

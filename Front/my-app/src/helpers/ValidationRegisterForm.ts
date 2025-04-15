@@ -1,7 +1,7 @@
-import { RegisterDTO, RegisterErrors } from "@/interfaces/userInterface";
+import { IRegisterDTO, IRegisterErrors } from "@/interfaces/userInterface";
 
-const validateRegisterForm = (state: RegisterDTO) => {
-  const errors: RegisterErrors = {};
+const validateRegisterForm = (state: IRegisterDTO) => {
+  const errors: IRegisterErrors = {};
 
   if (!state.name.trim()) errors.name = "Name is required";
   if (!state.email.trim()) {

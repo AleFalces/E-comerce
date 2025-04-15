@@ -9,7 +9,7 @@ export interface IProduct {
 }
 
 export interface CardProps {
-  product: IProduct; // Asegúrate de que IProduct esté definido correctamente
+  product: IProduct; //
 }
 
 export const products: IProduct[] = [

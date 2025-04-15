@@ -1,7 +1,7 @@
-import { LoginDTO, LoginFormErrorsDto } from "@/interfaces/userInterface";
+import { ILoginDTO, ILoginFormErrorsDto } from "@/interfaces/userInterface";
 
-const validatelogin = (state: LoginDTO) => {
-  const errors: LoginFormErrorsDto = {};
+const validatelogin = (state: ILoginDTO) => {
+  const errors: ILoginFormErrorsDto = {};
 
   if (!state.email.trim()) {
     errors.email = "Email is required";
