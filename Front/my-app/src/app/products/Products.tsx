@@ -24,7 +24,7 @@ const Products: React.FC = () => {
     <div className="grid  grid-cols-4 gap-4">
       {products.length ? (
         products.map((product) => (
-          <Link href={`/products/${product.id}`} key={product.id}>
+          <Link href={`/details/${product.id}`} key={product.id}>
             <Card key={product.id} product={product} />
           </Link>
         ))

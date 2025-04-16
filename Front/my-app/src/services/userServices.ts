@@ -1,9 +1,9 @@
-import { LoginDTO, RegisterDTO } from "../interfaces/userInterface";
+import { ILoginDTO, IRegisterDTO } from "../interfaces/userInterface";
 import { apiServices, handleAxiosError } from "./apiServices";
 
 const path: string = "/users";
 
-export const loginUserService = async (loginData: LoginDTO) => {
+export const loginUserService = async (loginData: ILoginDTO) => {
   try {
     const response = await apiServices.post(`${path}/login`, loginData);
     return response.data;
@@ -12,7 +12,7 @@ export const loginUserService = async (loginData: LoginDTO) => {
   }
 };
 
-export const registerUserService = async (userdata: RegisterDTO) => {
+export const registerUserService = async (userdata: IRegisterDTO) => {
   try {
     const response = await apiServices.post(`${path}/register`, userdata);
     return response.data;

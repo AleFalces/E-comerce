@@ -1,17 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { LoginDTO, LoginFormErrorsDto } from "../../interfaces/userInterface";
+import { ILoginDTO, ILoginFormErrorsDto } from "../../interfaces/userInterface";
 import { loginUserService } from "../../services/userServices";
 import validatelogin from "@/helpers/ValidationsLoginForm";
 
 const LoginUser: React.FC = () => {
-  const [formData, SetFormdata] = useState<LoginDTO>({
+  const [formData, SetFormdata] = useState<ILoginDTO>({
     email: "",
     password: "",
   });
 
-  const [errors, setErrors] = useState<LoginFormErrorsDto>({});
+  const [errors, setErrors] = useState<ILoginFormErrorsDto>({});
 
   const handlerImput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;

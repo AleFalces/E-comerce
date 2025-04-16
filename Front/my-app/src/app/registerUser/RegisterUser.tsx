@@ -1,10 +1,10 @@
 "use client";
 import { useState } from "react";
-import { RegisterDTO, RegisterErrors } from "../../interfaces/userInterface";
+import { IRegisterDTO, IRegisterErrors } from "../../interfaces/userInterface";
 import validateRegisterForm from "@/helpers/ValidationRegisterForm";
 
 const RegisterUser: React.FC = () => {
-  const [registerData, SetRegisterData] = useState<RegisterDTO>({
+  const [registerData, SetRegisterData] = useState<IRegisterDTO>({
     name: "",
     email: "",
     address: "",
@@ -13,7 +13,7 @@ const RegisterUser: React.FC = () => {
     Cpassword: "",
   });
 
-  const [errors, setErrors] = useState<RegisterErrors>({});
+  const [errors, setErrors] = useState<IRegisterErrors>({});
 
   const handlerImput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
