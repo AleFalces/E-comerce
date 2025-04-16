@@ -24,7 +24,18 @@ const Products: React.FC = () => {
     <div className="grid  grid-cols-4 gap-4">
       {products.length ? (
         products.map((product) => (
-          <Link href={`/details/${product.id}`} key={product.id}>
+          <Link
+            href={{
+              pathname: `/details/${product.id}`,
+              query: {
+                name: product.name,
+                price: product.price.toString(),
+                description: product.description,
+                image: product.image,
+              },
+            }}
+            key={product.id}
+          >
             <Card key={product.id} product={product} />
           </Link>
         ))
