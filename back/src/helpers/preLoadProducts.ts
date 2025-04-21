@@ -38,7 +38,7 @@ const productsToPreLoad: IProduct[] = [
     description:
       "High-end bass featuring a humbucker pickup and active 3-band EQ preamp.",
     image:
-      "https://s3-us-west-2.amazonaws.com/static.music-man.com/website/images/instruments/instrument-50.png?1598482639",
+      "https://m.media-amazon.com/images/I/51AFpA55YTL._AC_UF894,1000_QL80_.jpg",
     categoryId: 1,
     stock: 5,
   },
@@ -180,10 +180,11 @@ const productsToPreLoad: IProduct[] = [
   },
 
   {
-    name: "Ernie Ball Super Slinky Bass Strings",
+    name: "Elixir Nanoweb Medium Long Scale Electric Bass Strings (.045 - .0105)",
     price: 20,
     description: "Light gauge bass set ideal for slap and fast-playing styles.",
-    image: "https://example.com/images/strings-bass-slinky.jpg",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4p3iMkK6ooVvY4U_FhxBDYcHW9r9DTPkgfA&s",
     categoryId: 6,
     stock: 30,
   },

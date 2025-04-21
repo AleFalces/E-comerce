@@ -26,7 +26,7 @@ const Products: React.FC = () => {
         products.map((product) => (
           <Link
             href={{
-              pathname: `/details/${product.id}`,
+              pathname: `/products/${product.id}`,
               query: {
                 name: product.name,
                 price: product.price.toString(),

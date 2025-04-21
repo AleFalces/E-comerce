@@ -1,7 +1,7 @@
 import { IProductPageProps } from "@/interfaces/detailProductInterface";
 
-const Detail = async ({ searchParams }: IProductPageProps) => {
-  const { name, description, price, image } = await searchParams;
+const IdProducts = ({ id, searchParams }: IProductPageProps) => {
+  const { name, description, price, image } = searchParams;
   return (
     <div>
       <h1>{name}</h1>
@@ -12,4 +12,4 @@ const Detail = async ({ searchParams }: IProductPageProps) => {
   );
 };
 
-export default Detail;
+export default IdProducts;

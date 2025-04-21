@@ -1,7 +1,6 @@
 export interface IProductPageProps {
-  params: {
-    id: string;
-  };
+  id: string;
+
   searchParams: {
     name?: string;
     price?: string;
