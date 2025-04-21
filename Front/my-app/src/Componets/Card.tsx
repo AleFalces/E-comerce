@@ -5,7 +5,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
     <div className="border-4 border-double">
       <div>name: {product.name}</div>
       <div>price: {product.price}</div>
-      <div>{product.description}</div>
+      <div>{product.category.name}</div>
       <img src={product.image} alt={product.name} />
 
       <div>categoryId: {product.categoryId}</div>

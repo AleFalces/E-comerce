@@ -27,12 +27,6 @@ const Products: React.FC = () => {
           <Link
             href={{
               pathname: `/products/${product.id}`,
-              query: {
-                name: product.name,
-                price: product.price.toString(),
-                description: product.description,
-                image: product.image,
-              },
             }}
             key={product.id}
           >
