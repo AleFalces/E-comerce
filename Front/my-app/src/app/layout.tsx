@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 //componets
 import Navbar from "@/Componets/Navbar";
 import Footer from "@/Componets/Footer";
+import { AuthProvider } from "@/Componets/AuthContext";
 
 export default function RootLayout({
   children,
@@ -32,7 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navbar></Navbar>
-        {children}
+        <AuthProvider>{children}</AuthProvider>
         <Footer></Footer>
       </body>
     </html>

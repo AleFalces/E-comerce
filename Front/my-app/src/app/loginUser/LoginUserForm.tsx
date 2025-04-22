@@ -1,15 +1,22 @@
 "use client";
-
+//assets
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useLogin } from "@/Hook/useLogin";
+
+//Dto
 import { ILoginDTO, ILoginFormErrorsDto } from "../../interfaces/userInterface";
-import { loginUserService } from "../../services/userServices";
+//componets
+
 import validatelogin from "@/helpers/ValidationsLoginForm";
 
-const LoginUser: React.FC = () => {
+const LoginUserForm: React.FC = () => {
   const [formData, SetFormdata] = useState<ILoginDTO>({
     email: "",
     password: "",
   });
+  const router = useRouter();
+  const { loginUser } = useLogin();
 
   const [errors, setErrors] = useState<ILoginFormErrorsDto>({});
 
@@ -29,7 +36,8 @@ const LoginUser: React.FC = () => {
       setErrors(validationErrors);
       return;
     }
-    loginUserService(formData);
+    loginUser(formData);
+    router.push("/");
   };
 
   return (
@@ -65,4 +73,4 @@ const LoginUser: React.FC = () => {
   );
 };
 
-export default LoginUser;
+export default LoginUserForm;

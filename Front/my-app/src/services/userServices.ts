@@ -6,6 +6,7 @@ const path: string = "/users";
 export const loginUserService = async (loginData: ILoginDTO) => {
   try {
     const response = await apiServices.post(`${path}/login`, loginData);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     handleAxiosError(error, "Login Error");
