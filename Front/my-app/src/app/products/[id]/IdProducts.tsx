@@ -3,13 +3,14 @@
 import { getProductsById } from "@/services/productsServices";
 import { IProduct } from "@/helpers/mockProducts";
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import { useCart } from "@/Componets/CartContext";
 
 const IdProducts = () => {
   const { id } = useParams();
   const [product, setProduct] = useState<IProduct | null>(null);
   const { addToCart } = useCart();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -21,6 +22,10 @@ const IdProducts = () => {
 
     fetchProduct();
   }, [id]);
+
+  const handleGoToProducts = () => {
+    router.push(`/products`);
+  };
 
   if (!product) return <p>Loading...</p>;
 
@@ -38,6 +43,13 @@ const IdProducts = () => {
         className="mt-4 bg-green-600 text-white px-4 py-2 rounded"
       >
         Agregar al carrito
+      </button>
+
+      <button
+        onClick={handleGoToProducts}
+        className="bg-gray-700 text-white px-3 py-1 rounded"
+      >
+        Volver a productos
       </button>
     </div>
   );

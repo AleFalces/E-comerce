@@ -6,7 +6,7 @@ import { IProduct } from "@/helpers/mockProducts";
 import { useCart } from "@/Componets/CartContext";
 
 const CartPage = () => {
-  const { cart, removeFromCart, clearCart, getCartCount } = useCart();
+  const { removeOneFromCart, clearCart, getCartCount } = useCart();
   const [products, setProducts] = useState<IProduct[]>([]);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const CartPage = () => {
                   Subtotal: ${product.price * quantity}
                 </p>
                 <button
-                  onClick={() => removeFromCart(product.id)}
+                  onClick={() => removeOneFromCart(product.id)}
                   className="mt-auto bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                 >
                   Quitar uno

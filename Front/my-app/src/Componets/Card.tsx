@@ -1,12 +1,19 @@
 "use client";
+
 import { CardProps } from "@/helpers/mockProducts";
 import { useCart } from "./CartContext";
+import { useRouter } from "next/navigation";
 
 export const Card: React.FC<CardProps> = ({ product }) => {
   const { addToCart } = useCart();
+  const router = useRouter();
 
   const handleAddToCart = () => {
     addToCart(product.id);
+  };
+
+  const handleGoToDetail = () => {
+    router.push(`/products/${product.id}`);
   };
 
   return (
@@ -19,12 +26,21 @@ export const Card: React.FC<CardProps> = ({ product }) => {
       <div>categoryId: {product.categoryId}</div>
       <div>stock: {product.stock}</div>
 
-      <button
-        onClick={handleAddToCart}
-        className="mt-2 bg-blue-500 text-white px-3 py-1 rounded"
-      >
-        Agregar al carrito
-      </button>
+      <div className="flex gap-2 mt-2">
+        <button
+          onClick={handleAddToCart}
+          className="bg-blue-500 text-white px-3 py-1 rounded"
+        >
+          Agregar al carrito
+        </button>
+
+        <button
+          onClick={handleGoToDetail}
+          className="bg-gray-700 text-white px-3 py-1 rounded"
+        >
+          Ver detalle
+        </button>
+      </div>
     </div>
   );
 };
