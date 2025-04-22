@@ -1,5 +1,8 @@
 "use client";
 import { AuthContextType, User } from "@/interfaces/authInterfaces";
+import { ILoginDTO } from "@/interfaces/userInterface";
+import { loginUserService } from "@/services/userServices";
+
 import { createContext, useContext, useState, useEffect } from "react";
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -30,6 +33,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     setUser(null);
     setToken(null);
   };
+  const loginWithService = async (data: ILoginDTO) => {
+    const { user: u, token: t } = await loginUserService(data);
+    login(u, t);
+    return { user: u, token: t };
+  };
 
   return (
     <AuthContext.Provider
@@ -38,6 +46,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         token,
         login,
         logout,
+        loginWithService,
         isAuthenticated: !!token,
       }}
     >

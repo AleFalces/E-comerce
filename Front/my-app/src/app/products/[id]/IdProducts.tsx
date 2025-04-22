@@ -4,10 +4,12 @@ import { getProductsById } from "@/services/productsServices";
 import { IProduct } from "@/helpers/mockProducts";
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { useCart } from "@/Componets/CartContext";
 
 const IdProducts = () => {
   const { id } = useParams();
   const [product, setProduct] = useState<IProduct | null>(null);
+  const { addToCart } = useCart();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -20,18 +22,23 @@ const IdProducts = () => {
     fetchProduct();
   }, [id]);
 
+  if (!product) return <p>Loading...</p>;
+
   return (
-    <div>
-      {!product ? (
-        <p>Loading...</p>
-      ) : (
-        <div>
-          <h1>{product.name}</h1>
-          <p>{product.description}</p>
-          <p>Price: ${product.price}</p>
-          {product.image && <img src={product.image} alt={product.name} />}{" "}
-        </div>
+    <div className="p-4">
+      <h1 className="text-xl font-bold">{product.name}</h1>
+      <p>{product.description}</p>
+      <p>Price: ${product.price}</p>
+      {product.image && (
+        <img src={product.image} alt={product.name} className="w-48 h-48" />
       )}
+
+      <button
+        onClick={() => addToCart(product.id)}
+        className="mt-4 bg-green-600 text-white px-4 py-2 rounded"
+      >
+        Agregar al carrito
+      </button>
     </div>
   );
 };

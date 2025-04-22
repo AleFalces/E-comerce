@@ -21,6 +21,7 @@ export const metadata: Metadata = {
 import Navbar from "@/Componets/Navbar";
 import Footer from "@/Componets/Footer";
 import { AuthProvider } from "@/Componets/AuthContext";
+import { CartProvider } from "@/Componets/CartContext";
 
 export default function RootLayout({
   children,
@@ -33,9 +34,11 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <AuthProvider>
-          <Navbar />
-          {children}
-          <Footer />
+          <CartProvider>
+            <Navbar />
+            {children}
+            <Footer />
+          </CartProvider>
         </AuthProvider>
       </body>
     </html>

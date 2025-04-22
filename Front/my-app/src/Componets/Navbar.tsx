@@ -12,15 +12,16 @@ const Navbar: React.FC = () => {
       <Link href="/">Home</Link>
       <Link href="/products">Products</Link>
       <Link href="/about"> About Us</Link>
+      <Link href="/cart"> Cart</Link>
 
       {user ? (
         <>
-          <span>Hola, {user.name}</span>
-          <button onClick={logout}>Cerrar sesión</button>
+          <span>Hello, {user.name}</span>
+          <button onClick={logout}>Logout</button>
         </>
       ) : (
         <Link href="/loginUser">
-          <span>No has iniciado sesión</span>
+          <span>Login</span>
         </Link>
       )}
     </nav>
