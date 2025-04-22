@@ -1,16 +1,29 @@
+"use client";
 import Link from "next/link";
+import { useAuth } from "./AuthContext";
 
 const Navbar: React.FC = () => {
+  const { user, logout } = useAuth();
   return (
-    <div className="flex justify-around">
+    <nav className="flex justify-around">
       <Link href="/">
         <div>Img</div>
       </Link>
       <Link href="/">Home</Link>
       <Link href="/products">Products</Link>
       <Link href="/about"> About Us</Link>
-      <Link href="/loginUser"> User</Link>
-    </div>
+
+      {user ? (
+        <>
+          <span>Hola, {user.name}</span>
+          <button onClick={logout}>Cerrar sesión</button>
+        </>
+      ) : (
+        <Link href="/loginUser">
+          <span>No has iniciado sesión</span>
+        </Link>
+      )}
+    </nav>
   );
 };
 

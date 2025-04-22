@@ -9,6 +9,7 @@ import {
 } from "./credential.service";
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../config/envs";
+import { SafeUser } from "../dtos/safeUserDto";
 
 export const checkUserExists = async (email: string): Promise<boolean> => {
   const user = await UserRepository.findOneBy({ email });
@@ -30,7 +31,7 @@ export const registerUserService = async (
 
 export const loginUserService = async (
   loginUserDto: LoginUserDto
-): Promise<{ token: string; user: User }> => {
+): Promise<{ token: string; user: SafeUser }> => {
   const user: User | null = await UserRepository.findOne({
     where: {
       email: loginUserDto.email,
@@ -41,10 +42,15 @@ export const loginUserService = async (
   if (
     await checkPasswordService(loginUserDto.password, user.credential.password)
   ) {
+    const { password, ...safeCredential } = user.credential;
+    const safeUser: SafeUser = {
+      ...user,
+      credential: safeCredential,
+    };
     const token = jwt.sign({ userId: user.id }, JWT_SECRET);
 
     return {
-      user,
+      user: safeUser,
       token,
     };
   } else {
