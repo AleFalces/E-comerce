@@ -7,8 +7,17 @@ import { useCart } from "@/Componets/CartContext";
 import { useRouter } from "next/navigation";
 
 const CartPage = () => {
-  const { removeOneFromCart, clearCart, getCartCount } = useCart();
+  const {
+    addToCart,
+    removeOneFromCart,
+    removeAllFromCart, // ⬅️ nueva función que elimina todos los de un producto
+    clearCart,
+    getCartCount,
+  } = useCart();
+
   const [products, setProducts] = useState<IProduct[]>([]);
+  const router = useRouter();
+  const productCounts = getCartCount();
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -18,9 +27,6 @@ const CartPage = () => {
 
     fetchProducts();
   }, []);
-
-  const productCounts = getCartCount();
-  const router = useRouter();
 
   const productsInCart = products.filter((p) => productCounts[p.id]);
 
@@ -67,15 +73,31 @@ const CartPage = () => {
                 </p>
                 <p className="font-medium">Precio: ${product.price}</p>
                 <p>Cantidad: {quantity}</p>
-                <p className="font-semibold text-blue-600">
+
+                <div className="flex items-center gap-2 mt-2">
+                  <button
+                    onClick={() => addToCart(product.id, product.stock)}
+                    className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600"
+                  >
+                    Agregar otro
+                  </button>
+                  <button
+                    onClick={() => removeOneFromCart(product.id)}
+                    className="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600"
+                  >
+                    Elimir Uno
+                  </button>
+                  <button
+                    onClick={() => removeAllFromCart(product.id)}
+                    className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
+                  >
+                    Eliminar todos
+                  </button>
+                </div>
+
+                <p className="font-semibold text-blue-600 mt-2">
                   Subtotal: ${product.price * quantity}
                 </p>
-                <button
-                  onClick={() => removeOneFromCart(product.id)}
-                  className="mt-auto bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
-                >
-                  Quitar uno
-                </button>
               </div>
             );
           })}

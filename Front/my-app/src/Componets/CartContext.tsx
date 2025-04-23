@@ -17,9 +17,18 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.setItem("cart", JSON.stringify(cartIds));
   }, [cartIds]);
 
-  const addToCart = (id: number) => {
-    setCartIds((prev) => [...prev, id]);
-    toast.success("Added this product to your cart");
+  const addToCart = (id: number, stockAvailable?: number) => {
+    setCartIds((prev) => {
+      const productCount = prev.filter((pid) => pid === id).length;
+
+      if (stockAvailable !== undefined && productCount >= stockAvailable) {
+        toast.error("No hay más stock disponible de este producto");
+        return prev;
+      }
+
+      toast.success("Producto añadido al carrito");
+      return [...prev, id];
+    });
   };
 
   const removeOneFromCart = (id: number) => {

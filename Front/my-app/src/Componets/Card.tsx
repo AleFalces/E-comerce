@@ -8,10 +8,6 @@ export const Card: React.FC<CardProps> = ({ product }) => {
   const { addToCart } = useCart();
   const router = useRouter();
 
-  const handleAddToCart = () => {
-    addToCart(product.id);
-  };
-
   const handleGoToDetail = () => {
     router.push(`/products/${product.id}`);
   };
@@ -28,7 +24,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
 
       <div className="flex gap-2 mt-2">
         <button
-          onClick={handleAddToCart}
+          onClick={() => addToCart(product.id, product.stock)}
           className="bg-blue-500 text-white px-3 py-1 rounded"
         >
           Agregar al carrito

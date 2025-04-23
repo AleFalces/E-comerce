@@ -37,7 +37,7 @@ const IdProducts = () => {
       {product.image && <img src={product.image} alt={product.name} />}
 
       <button
-        onClick={() => addToCart(product.id)}
+        onClick={() => addToCart(product.id, product.stock)}
         className="mt-4 bg-green-600 text-white px-4 py-2 rounded"
       >
         Agregar al carrito
