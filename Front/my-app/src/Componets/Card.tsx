@@ -14,12 +14,11 @@ export const Card: React.FC<CardProps> = ({ product }) => {
 
   return (
     <div className="border-4 border-double p-2">
-      <div>name: {product.name}</div>
+      <div> {product.name}</div>
       <div>price: ${product.price}</div>
       <div>{product.category.name}</div>
       <img src={product.image} alt={product.name} className="w-40 h-40" />
 
-      <div>categoryId: {product.categoryId}</div>
       <div>stock: {product.stock}</div>
 
       <div className="flex gap-2 mt-2">

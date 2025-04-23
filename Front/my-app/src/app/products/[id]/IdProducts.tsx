@@ -35,6 +35,7 @@ const IdProducts = () => {
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
       {product.image && <img src={product.image} alt={product.name} />}
+      <div>stock: {product.stock}</div>
 
       <button
         onClick={() => addToCart(product.id, product.stock)}

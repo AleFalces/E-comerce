@@ -6,6 +6,7 @@ import { useLogin } from "@/Hook/useLogin";
 import { ILoginDTO, ILoginFormErrorsDto } from "@/interfaces/userInterface";
 import validatelogin from "@/helpers/ValidationsLoginForm";
 import toast from "react-hot-toast";
+import Link from "next/link";
 
 const LoginUserForm: React.FC = () => {
   const [formData, setFormData] = useState<ILoginDTO>({
@@ -42,7 +43,7 @@ const LoginUserForm: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-md mx-auto p-6 bg-white shadow rounded">
+    <div className="flex flex-col w-full max-w-md mx-auto p-6 bg-amber-500 shadow rounded">
       <h2 className="text-2xl font-semibold mb-4">Iniciar Sesión</h2>
       <form onSubmit={handleSubmit} noValidate>
         <label className="block mb-1" htmlFor="email">
@@ -78,6 +79,13 @@ const LoginUserForm: React.FC = () => {
         {errors.password && (
           <p className="text-red-600 text-sm mb-2">{errors.password}</p>
         )}
+
+        <div>
+          <p>
+            Don`t have an account?
+            <Link href="/registerUser">Sign up</Link>
+          </p>
+        </div>
 
         <button
           type="submit"

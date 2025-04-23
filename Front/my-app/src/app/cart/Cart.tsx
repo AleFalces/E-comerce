@@ -19,7 +19,7 @@ const CartPage = () => {
   } = useCart();
 
   const [products, setProducts] = useState<IProduct[]>([]);
-  const router = useRouter();
+
   const productCounts = getCartCount();
 
   const user =
@@ -45,6 +45,7 @@ const CartPage = () => {
     return accumulator + product.price * quantity;
   }, 0);
 
+  const router = useRouter();
   const handleGoToProducts = () => {
     router.push(`/products`);
   };
@@ -54,12 +55,11 @@ const CartPage = () => {
       router.push("/loginUser");
       return;
     }
-
     try {
       await orderService({
         products: cartIds,
       });
-
+      router.push("/products");
       toast.success("Compra realizada con éxito");
       clearCart();
     } catch (error) {
@@ -148,7 +148,7 @@ const CartPage = () => {
             onClick={handleCheckout}
             className="bg-blue-600 text-white px-4 py-2 rounded"
           >
-            {user ? "Finalizar compra" : "Ir a login"}
+            {user ? "Finalizar compra" : "Logueate para realizar tu reserva"}
           </button>
         </div>
       )}
