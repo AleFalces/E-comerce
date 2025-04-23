@@ -22,6 +22,7 @@ import Navbar from "@/Componets/Navbar";
 import Footer from "@/Componets/Footer";
 import { AuthProvider } from "@/Componets/AuthContext";
 import { CartProvider } from "@/Componets/CartContext";
+import { Toaster } from "react-hot-toast";
 
 export default function RootLayout({
   children,
@@ -33,6 +34,25 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            success: {
+              className: "bg-green-500 text-white",
+              iconTheme: {
+                primary: "#ffffff",
+                secondary: "#16a34a",
+              },
+            },
+            error: {
+              className: "bg-red-500 text-white",
+              iconTheme: {
+                primary: "#ffffff",
+                secondary: "#dc2626",
+              },
+            },
+          }}
+        />
         <AuthProvider>
           <CartProvider>
             <Navbar />

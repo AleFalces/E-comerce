@@ -34,9 +34,7 @@ const IdProducts = () => {
       <h1 className="text-xl font-bold">{product.name}</h1>
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
-      {product.image && (
-        <img src={product.image} alt={product.name} className="w-48 h-48" />
-      )}
+      {product.image && <img src={product.image} alt={product.name} />}
 
       <button
         onClick={() => addToCart(product.id)}

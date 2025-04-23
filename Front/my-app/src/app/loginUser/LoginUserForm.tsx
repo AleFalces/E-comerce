@@ -1,73 +1,90 @@
 "use client";
-//assets
+
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useLogin } from "@/Hook/useLogin";
-
-//Dto
-import { ILoginDTO, ILoginFormErrorsDto } from "../../interfaces/userInterface";
-//componets
-
+import { ILoginDTO, ILoginFormErrorsDto } from "@/interfaces/userInterface";
 import validatelogin from "@/helpers/ValidationsLoginForm";
+import toast from "react-hot-toast";
 
 const LoginUserForm: React.FC = () => {
-  const [formData, SetFormdata] = useState<ILoginDTO>({
+  const [formData, setFormData] = useState<ILoginDTO>({
     email: "",
     password: "",
   });
-  const router = useRouter();
-  const { loginUser } = useLogin();
-
   const [errors, setErrors] = useState<ILoginFormErrorsDto>({});
+  const { loginUser } = useLogin();
+  const router = useRouter();
 
-  const handlerImput = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    SetFormdata({
-      ...formData,
-      [name]: value,
-    });
+  const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    if (errors[name as keyof ILoginFormErrorsDto]) {
+      setErrors({ ...errors, [name]: undefined });
+    }
   };
 
-  const handlerSumbit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
     const validationErrors = validatelogin(formData);
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-    loginUser(formData);
+
+    await toast.promise(loginUser(formData), {
+      loading: "Verificando credenciales…",
+      success: "¡Bienvenido de vuelta! 👋",
+      error: "Credenciales inválidas, inténtalo de nuevo.",
+    });
     router.push("/");
   };
 
   return (
-    <div className=" felx flex-colum w-800 bg-auto">
-      <form onSubmit={handlerSumbit}>
-        <label> Email: </label>
+    <div className="flex flex-col w-full max-w-md mx-auto p-6 bg-white shadow rounded">
+      <h2 className="text-2xl font-semibold mb-4">Iniciar Sesión</h2>
+      <form onSubmit={handleSubmit} noValidate>
+        <label className="block mb-1" htmlFor="email">
+          Email
+        </label>
         <input
-          type="email"
+          id="email"
           name="email"
-          onChange={handlerImput}
+          type="email"
           value={formData.email}
-          className={`border p-2 rounded ${
+          onChange={handleInput}
+          className={`w-full mb-2 p-2 border rounded ${
             errors.email ? "border-red-500" : "border-gray-300"
           }`}
         />
-        {errors.email && <p className="text-red-600 text-sm">{errors.email}</p>}
-        <label> Password: </label>
+        {errors.email && (
+          <p className="text-red-600 text-sm mb-2">{errors.email}</p>
+        )}
+
+        <label className="block mb-1" htmlFor="password">
+          Contraseña
+        </label>
         <input
-          type="password"
+          id="password"
           name="password"
-          onChange={handlerImput}
+          type="password"
           value={formData.password}
-          className={`border p-2 rounded ${
+          onChange={handleInput}
+          className={`w-full mb-2 p-2 border rounded ${
             errors.password ? "border-red-500" : "border-gray-300"
           }`}
         />
         {errors.password && (
-          <p className="text-red-600 text-sm">{errors.password}</p>
+          <p className="text-red-600 text-sm mb-2">{errors.password}</p>
         )}
-        <button type="submit">Login</button>
+
+        <button
+          type="submit"
+          className="w-full mt-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+        >
+          Login
+        </button>
       </form>
     </div>
   );

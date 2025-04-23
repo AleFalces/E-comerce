@@ -2,6 +2,9 @@
 import { useState } from "react";
 import { IRegisterDTO, IRegisterErrors } from "../../interfaces/userInterface";
 import validateRegisterForm from "@/helpers/ValidationRegisterForm";
+import { registerUserService } from "@/services/userServices";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const RegisterUser: React.FC = () => {
   const [registerData, SetRegisterData] = useState<IRegisterDTO>({
@@ -14,6 +17,7 @@ const RegisterUser: React.FC = () => {
   });
 
   const [errors, setErrors] = useState<IRegisterErrors>({});
+  const router = useRouter();
 
   const handlerImput = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -23,7 +27,7 @@ const RegisterUser: React.FC = () => {
     });
     console.log(registerData);
   };
-  const handlerSumbit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handlerSumbit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const validationErrors = validateRegisterForm(registerData);
@@ -31,8 +35,12 @@ const RegisterUser: React.FC = () => {
       setErrors(validationErrors);
       return;
     }
-
-    // registerUserService(registerData);
+    await toast.promise(registerUserService(registerData), {
+      loading: "Verificando credenciales…",
+      success: "¡Registrado correctamente! ✅",
+      error: "Error al registrar tus datos😣",
+    });
+    router.push("/loginUser");
   };
 
   return (

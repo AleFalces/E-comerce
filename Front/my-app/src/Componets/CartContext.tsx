@@ -1,6 +1,7 @@
 "use client";
 import { CartContextType } from "@/interfaces/cartcontextInterface";
 import { createContext, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
@@ -16,7 +17,10 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     localStorage.setItem("cart", JSON.stringify(cartIds));
   }, [cartIds]);
 
-  const addToCart = (id: number) => setCartIds((prev) => [...prev, id]);
+  const addToCart = (id: number) => {
+    setCartIds((prev) => [...prev, id]);
+    toast.success("Added this product to your cart");
+  };
 
   const removeOneFromCart = (id: number) => {
     const index = cartIds.indexOf(id);
@@ -24,6 +28,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       const newCart = [...cartIds];
       newCart.splice(index, 1);
       setCartIds(newCart);
+      toast.success("Product Removed Successful");
     }
   };
 

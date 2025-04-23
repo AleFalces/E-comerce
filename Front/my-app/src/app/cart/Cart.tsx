@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { getAllProducts } from "@/services/productsServices";
 import { IProduct } from "@/helpers/mockProducts";
 import { useCart } from "@/Componets/CartContext";
+import { useRouter } from "next/navigation";
 
 const CartPage = () => {
   const { removeOneFromCart, clearCart, getCartCount } = useCart();
@@ -19,6 +20,7 @@ const CartPage = () => {
   }, []);
 
   const productCounts = getCartCount();
+  const router = useRouter();
 
   const productsInCart = products.filter((p) => productCounts[p.id]);
 
@@ -27,12 +29,24 @@ const CartPage = () => {
     return acc + product.price * quantity;
   }, 0);
 
+  const handleGoToProducts = () => {
+    router.push(`/products`);
+  };
+
   return (
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-6">Carrito de Compras</h1>
 
       {productsInCart.length === 0 ? (
-        <p>No hay productos en el carrito.</p>
+        <div>
+          <p>No hay productos en el carrito.</p>
+          <button
+            onClick={handleGoToProducts}
+            className="bg-gray-700 text-white px-3 py-1 rounded"
+          >
+            Volver a productos
+          </button>
+        </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {productsInCart.map((product) => {

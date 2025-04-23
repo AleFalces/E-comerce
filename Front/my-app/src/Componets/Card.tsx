@@ -21,7 +21,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
       <div>name: {product.name}</div>
       <div>price: ${product.price}</div>
       <div>{product.category.name}</div>
-      <img src={product.image} alt={product.name} className="w-32 h-32" />
+      <img src={product.image} alt={product.name} className="w-40 h-40" />
 
       <div>categoryId: {product.categoryId}</div>
       <div>stock: {product.stock}</div>
