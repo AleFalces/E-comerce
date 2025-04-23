@@ -57,7 +57,6 @@ const CartPage = () => {
 
     try {
       await orderService({
-        userId: user.id,
         products: cartIds,
       });
 

@@ -22,9 +22,14 @@ export const registerUserService = async (userdata: IRegisterDTO) => {
   }
 };
 
-export const getUserOrders = async (userId: number) => {
+export const getUserOrders = async () => {
+  const token = localStorage.getItem("token");
   try {
-    const response = await apiServices.post(`${path}/orders`, userId);
+    const response = await apiServices.post(`${path}/orders`, {
+      headers: {
+        Authorization: token,
+      },
+    });
     return response.data;
   } catch (error) {
     handleAxiosError(error, "Orders error");
