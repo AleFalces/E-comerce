@@ -5,19 +5,27 @@ import { getAllProducts } from "@/services/productsServices";
 import { IProduct } from "@/helpers/mockProducts";
 import { useCart } from "@/Componets/CartContext";
 import { useRouter } from "next/navigation";
+import { toast } from "react-hot-toast";
+import { orderService } from "@/services/orderServices";
 
 const CartPage = () => {
   const {
     addToCart,
     removeOneFromCart,
-    removeAllFromCart, // ⬅️ nueva función que elimina todos los de un producto
+    removeAllFromCart,
     clearCart,
     getCartCount,
+    cartIds,
   } = useCart();
 
   const [products, setProducts] = useState<IProduct[]>([]);
   const router = useRouter();
   const productCounts = getCartCount();
+
+  const user =
+    typeof window !== "undefined"
+      ? JSON.parse(localStorage.getItem("user") || "null")
+      : null;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -28,15 +36,37 @@ const CartPage = () => {
     fetchProducts();
   }, []);
 
-  const productsInCart = products.filter((p) => productCounts[p.id]);
+  const productsInCart = products.filter(
+    (product) => productCounts[product.id]
+  );
 
-  const totalPrice = productsInCart.reduce((acc, product) => {
+  const totalPrice = productsInCart.reduce((accumulator, product) => {
     const quantity = productCounts[product.id] || 0;
-    return acc + product.price * quantity;
+    return accumulator + product.price * quantity;
   }, 0);
 
   const handleGoToProducts = () => {
     router.push(`/products`);
+  };
+
+  const handleCheckout = async () => {
+    if (!user) {
+      router.push("/loginUser");
+      return;
+    }
+
+    try {
+      await orderService({
+        userId: user.id,
+        products: cartIds,
+      });
+
+      toast.success("Compra realizada con éxito");
+      clearCart();
+    } catch (error) {
+      toast.error("Error al procesar la compra");
+      console.error(error);
+    }
   };
 
   return (
@@ -85,7 +115,7 @@ const CartPage = () => {
                     onClick={() => removeOneFromCart(product.id)}
                     className="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600"
                   >
-                    Elimir Uno
+                    Eliminar Uno
                   </button>
                   <button
                     onClick={() => removeAllFromCart(product.id)}
@@ -105,13 +135,21 @@ const CartPage = () => {
       )}
 
       {productsInCart.length > 0 && (
-        <div className="mt-8">
+        <div className="mt-8 flex flex-col gap-4">
           <p className="text-xl font-bold">Total: ${totalPrice}</p>
+
           <button
             onClick={clearCart}
-            className="mt-4 bg-gray-800 text-white px-4 py-2 rounded"
+            className="bg-gray-800 text-white px-4 py-2 rounded"
           >
             Vaciar carrito
+          </button>
+
+          <button
+            onClick={handleCheckout}
+            className="bg-blue-600 text-white px-4 py-2 rounded"
+          >
+            {user ? "Finalizar compra" : "Ir a login"}
           </button>
         </div>
       )}

@@ -18,10 +18,8 @@ const Products: React.FC = () => {
     fetchProducts();
   }, []);
 
-  // 🟡 Extraemos las categorías únicas para el dropdown
   const categories = Array.from(new Set(products.map((p) => p.category.name)));
 
-  // 🟢 Aplicamos filtro si hay una categoría seleccionada
   const filteredProducts =
     selectedCategory === "all"
       ? products
@@ -29,7 +27,6 @@ const Products: React.FC = () => {
 
   return (
     <div>
-      {/* 🔽 Dropdown de categorías */}
       <div className="mb-4">
         <label htmlFor="category" className="mr-2">
           Filtrar por categoría:
@@ -49,7 +46,6 @@ const Products: React.FC = () => {
         </select>
       </div>
 
-      {/* 🧱 Productos filtrados */}
       <div className="grid grid-cols-4 gap-4">
         {filteredProducts.length ? (
           filteredProducts.map((product) => (
