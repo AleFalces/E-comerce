@@ -5,8 +5,8 @@ import { getAllProducts } from "@/services/productsServices";
 import { IProduct } from "@/helpers/mockProducts";
 import { useCart } from "@/Componets/CartContext";
 import { useRouter } from "next/navigation";
-import { toast } from "react-hot-toast";
 import { orderService } from "@/services/orderServices";
+import { confirmAction, showError, showSuccess } from "@/helpers/alerts";
 
 const CartPage = () => {
   const {
@@ -55,16 +55,51 @@ const CartPage = () => {
       router.push("/loginUser");
       return;
     }
+    const confirmed = await confirmAction({
+      title: "¿Confirmar compra?",
+      text: `Estás a punto de realizar una compra con ${cartIds.length} productos. ¿Deseas continuar?`,
+      confirmButtonText: "Sí, confirmar compra",
+    });
+    if (!confirmed) {
+      return;
+    }
     try {
       await orderService({
         products: cartIds,
       });
-      router.push("/products");
-      toast.success("Compra realizada con éxito");
+
+      showSuccess("Compra realizada con éxito");
       clearCart();
+      router.push("/products");
     } catch (error) {
-      toast.error("Error al procesar la compra");
+      showError("Error al procesar la compra");
       console.error(error);
+    }
+  };
+
+  const handleClearCart = async () => {
+    const confirmed = await confirmAction({
+      title: "¿Vaciar carrito?",
+      text: "Se eliminarán todos los productos del carrito.",
+      confirmButtonText: "Sí, vaciar",
+    });
+
+    if (confirmed) {
+      clearCart();
+      showSuccess("¡Carrito vacío!");
+    }
+  };
+
+  const handleDeleteAll = async (id: number, name: string) => {
+    const confirmed = await confirmAction({
+      title: `¿Eliminar ${name} del carrito?`,
+      text: `Se eliminarán  todos productos de este tipo del carrito.`,
+      confirmButtonText: "Sí, vaciar",
+    });
+
+    if (confirmed) {
+      removeAllFromCart(id);
+      showSuccess("¡Eliminado Correctamente!");
     }
   };
 
@@ -117,7 +152,7 @@ const CartPage = () => {
                     Eliminar Uno
                   </button>
                   <button
-                    onClick={() => removeAllFromCart(product.id)}
+                    onClick={() => handleDeleteAll(product.id, product.name)}
                     className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
                   >
                     Eliminar todos
@@ -138,7 +173,7 @@ const CartPage = () => {
           <p className="text-xl font-bold">Total: ${totalPrice}</p>
 
           <button
-            onClick={clearCart}
+            onClick={handleClearCart}
             className="bg-gray-800 text-white px-4 py-2 rounded"
           >
             Vaciar carrito
