@@ -7,6 +7,7 @@ import { useCart } from "@/Componets/CartContext";
 import { useRouter } from "next/navigation";
 import { orderService } from "@/services/orderServices";
 import { confirmAction, showError, showSuccess } from "@/helpers/alerts";
+import { IUser } from "@/interfaces/userInterface";
 
 const CartPage = () => {
   const {
@@ -19,13 +20,25 @@ const CartPage = () => {
   } = useCart();
 
   const [products, setProducts] = useState<IProduct[]>([]);
+  const [user, setUser] = useState<IUser>();
 
   const productCounts = getCartCount();
 
-  const user =
-    typeof window !== "undefined"
-      ? JSON.parse(localStorage.getItem("user") || "null")
-      : null;
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkUser = () => {
+      const storedUser = localStorage.getItem("user");
+      setUser(storedUser ? JSON.parse(storedUser) : null);
+    };
+
+    checkUser();
+    window.addEventListener("storage", checkUser);
+
+    return () => {
+      window.removeEventListener("storage", checkUser);
+    };
+  }, []);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -45,7 +58,6 @@ const CartPage = () => {
     return accumulator + product.price * quantity;
   }, 0);
 
-  const router = useRouter();
   const handleGoToProducts = () => {
     router.push(`/products`);
   };
@@ -60,14 +72,10 @@ const CartPage = () => {
       text: `Estás a punto de realizar una compra con ${cartIds.length} productos. ¿Deseas continuar?`,
       confirmButtonText: "Sí, confirmar compra",
     });
-    if (!confirmed) {
-      return;
-    }
-    try {
-      await orderService({
-        products: cartIds,
-      });
+    if (!confirmed) return;
 
+    try {
+      await orderService({ products: cartIds });
       showSuccess("Compra realizada con éxito");
       clearCart();
       router.push("/products");
@@ -83,7 +91,6 @@ const CartPage = () => {
       text: "Se eliminarán todos los productos del carrito.",
       confirmButtonText: "Sí, vaciar",
     });
-
     if (confirmed) {
       clearCart();
       showSuccess("¡Carrito vacío!");
@@ -93,13 +100,12 @@ const CartPage = () => {
   const handleDeleteAll = async (id: number, name: string) => {
     const confirmed = await confirmAction({
       title: `¿Eliminar ${name} del carrito?`,
-      text: `Se eliminarán  todos productos de este tipo del carrito.`,
-      confirmButtonText: "Sí, vaciar",
+      text: `Se eliminarán todos los productos de este tipo del carrito.`,
+      confirmButtonText: "Sí, eliminar",
     });
-
     if (confirmed) {
       removeAllFromCart(id);
-      showSuccess("¡Eliminado Correctamente!");
+      showSuccess("¡Eliminado correctamente!");
     }
   };
 

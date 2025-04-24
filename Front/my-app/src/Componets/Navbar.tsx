@@ -15,6 +15,9 @@ const Navbar: React.FC = () => {
 
     if (confirmed) {
       logout();
+
+      window.dispatchEvent(new StorageEvent("storage", { key: "user" }));
+
       showSuccess("Sesión cerrada con éxito");
     }
   };
