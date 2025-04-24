@@ -1,19 +1,29 @@
 "use client";
-import { useRouter } from "next/navigation";
+
+import React, { useEffect, useState } from "react";
 
 const HeroSection: React.FC = () => {
-  const router = useRouter();
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsVisible(true);
+    }, 300);
+  }, []);
 
   return (
-    <section className="min-h-[60vh] flex flex-col justify-center items-center text-center p-6">
-      <h1 className="text-4xl font-bold">Bienvenido a [Nombre de tu Tienda]</h1>
-      <p className="mt-4 text-lg">Calidad, confianza y los mejores precios.</p>
-      <button
-        className="mt-6 bg-blue-600 text-white px-4 py-2 rounded"
-        onClick={() => router.push("/products")}
-      >
-        Ver productos
-      </button>
+    <section
+      className={`flex justify-center items-center bg-blue-600 h-screen text-white 
+        transition-opacity duration-1000 ${
+          isVisible ? "opacity-100" : "opacity-0"
+        }`}
+    >
+      <div className="text-center">
+        <h1 className="text-4xl font-extrabold">Bienvenido a nuestra tienda</h1>
+        <p className="mt-4 text-lg">
+          Explora los instrumentos más increíbles, solo aquí.
+        </p>
+      </div>
     </section>
   );
 };
