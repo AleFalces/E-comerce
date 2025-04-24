@@ -1,43 +1,48 @@
 "use client";
-import { CartContextType } from "@/interfaces/cartcontextInterface";
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
+
+type CartContextType = {
+  cartIds: number[];
+  addToCart: (id: number, stock: number) => void;
+  removeOneFromCart: (id: number) => void;
+  removeAllFromCart: (id: number) => void;
+  clearCart: () => void;
+  getCartCount: () => Record<number, number>;
+  getRemainingStock: (productId: number, originalStock: number) => number;
+};
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
 
-export const CartProvider = ({ children }: { children: React.ReactNode }) => {
+export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [cartIds, setCartIds] = useState<number[]>([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem("cart");
-    if (stored) setCartIds(JSON.parse(stored));
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCartIds(JSON.parse(storedCart));
+    }
   }, []);
 
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cartIds));
   }, [cartIds]);
 
-  const addToCart = (id: number, stockAvailable?: number) => {
-    setCartIds((prev) => {
-      const productCount = prev.filter((pid) => pid === id).length;
-
-      if (stockAvailable !== undefined && productCount >= stockAvailable) {
-        toast.error("No hay más stock disponible de este producto");
-        return prev;
-      }
-
-      toast.success("Producto añadido al carrito");
-      return [...prev, id];
-    });
+  const addToCart = (id: number, stock: number) => {
+    const count = cartIds.filter((itemId) => itemId === id).length;
+    if (count >= stock) return;
+    setCartIds((prev) => [...prev, id]);
+    toast.success("Producto añadido al carrito");
   };
 
   const removeOneFromCart = (id: number) => {
-    const index = cartIds.indexOf(id);
+    const index = cartIds.findIndex((itemId) => itemId === id);
     if (index !== -1) {
       const newCart = [...cartIds];
       newCart.splice(index, 1);
       setCartIds(newCart);
-      toast.success("Product Removed Successful");
     }
   };
 
@@ -45,13 +50,21 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setCartIds((prev) => prev.filter((itemId) => itemId !== id));
   };
 
-  const clearCart = () => setCartIds([]);
+  const clearCart = () => {
+    setCartIds([]);
+  };
 
-  const getCartCount = (): Record<number, number> => {
-    return cartIds.reduce((acc, id) => {
-      acc[id] = (acc[id] || 0) + 1;
-      return acc;
-    }, {} as Record<number, number>);
+  const getCartCount = () => {
+    const counts: Record<number, number> = {};
+    cartIds.forEach((id) => {
+      counts[id] = (counts[id] || 0) + 1;
+    });
+    return counts;
+  };
+
+  const getRemainingStock = (productId: number, originalStock: number) => {
+    const count = cartIds.filter((id) => id === productId).length;
+    return Math.max(originalStock - count, 0);
   };
 
   return (
@@ -63,6 +76,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         removeAllFromCart,
         clearCart,
         getCartCount,
+        getRemainingStock,
       }}
     >
       {children}
@@ -71,7 +85,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
 };
 
 export const useCart = () => {
-  const ctx = useContext(CartContext);
-  if (!ctx) throw new Error("useCart debe usarse dentro del CartProvider");
-  return ctx;
+  const context = useContext(CartContext);
+  if (!context) throw new Error("useCart must be used within a CartProvider");
+  return context;
 };
