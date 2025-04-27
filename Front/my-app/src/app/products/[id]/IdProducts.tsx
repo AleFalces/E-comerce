@@ -49,11 +49,7 @@ const ProductDetail: React.FC = () => {
           <button
             onClick={() => addToCart(product.id, product.stock)}
             disabled={remainingStock === 0}
-            className={`px-6 py-3 rounded-xl font-semibold text-white transition-colors duration-300 \${
-              remainingStock === 0
-                ? "bg-gray-400 cursor-not-allowed"
-                : "bg-red-800 hover:bg-green-800"
-            }`}
+            className={`px-6 py-3 rounded-xl font-semibold text-white bg-red-800 hover:bg-red-900 transition-colors duration-300 `}
           >
             Agregar al carrito
           </button>

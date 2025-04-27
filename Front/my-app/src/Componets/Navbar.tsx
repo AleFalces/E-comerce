@@ -12,6 +12,7 @@ import {
   Info,
   Package,
   ChevronDown,
+  ChevronUp,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -34,61 +35,71 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="w-full bg-gray-900 text-white py-4 px-6 shadow-md">
-      <div className="max-w-6xl mx-auto flex items-center justify-between">
+    <nav className="bg-gray-900 text-white shadow-lg">
+      <div className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
         {/* Logo */}
-        <Link href="/" className="text-lg font-bold">
-          <div>LOGO</div>
+        <Link
+          href="/"
+          className="text-2xl font-bold hover:text-amber-200 transition-colors duration-300"
+        >
+          SoundNest
         </Link>
 
         {/* Navegación */}
-        <div className="flex gap-6 items-center text-sm">
-          <Link href="/" className="flex items-center gap-1 hover:underline">
-            <Home size={16} /> Home
+        <div className="flex items-center space-x-6 text-sm">
+          <Link
+            href="/"
+            className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
+          >
+            <Home size={18} /> <span>Home</span>
           </Link>
           <Link
             href="/products"
-            className="flex items-center gap-1 hover:underline"
+            className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
           >
-            <Package size={16} /> Productos
+            <Package size={18} /> <span>Productos</span>
           </Link>
           <Link
             href="/about"
-            className="flex items-center gap-1 hover:underline"
+            className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
           >
-            <Info size={16} /> Nosotros
+            <Info size={18} /> <span>Nosotros</span>
           </Link>
           <Link
             href="/cart"
-            className="flex items-center gap-1 hover:underline"
+            className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
           >
-            <ShoppingCart size={16} /> Carrito
+            <ShoppingCart size={18} /> <span>Carrito</span>
           </Link>
 
           {user ? (
             <div className="relative">
-              {/* Usuario */}
-              <span
+              <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                className="flex items-center gap-1 cursor-pointer hover:underline"
+                className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300 focus:outline-none"
               >
-                <User size={16} /> {user.name} <ChevronDown size={16} />
-              </span>
-
-              {/* Desplegable */}
+                <User size={18} />
+                <span>{user.name}</span>
+                {isDropdownOpen ? (
+                  <ChevronUp size={18} />
+                ) : (
+                  <ChevronDown size={18} />
+                )}
+              </button>
               {isDropdownOpen && (
-                <div className="absolute top-full right-0 bg-gray-800 text-white mt-2 p-2 rounded shadow-md">
+                <div className="absolute right-0 mt-2 w-40 bg-gray-800 rounded-lg shadow-md">
                   <Link
                     href="/userOrders"
-                    className="block px-4 py-2 hover:bg-gray-700"
+                    className="flex items-center px-4 py-2 hover:bg-gray-700 text-sm transition-colors duration-300"
                   >
-                    Mis órdenes
+                    <Package size={16} />{" "}
+                    <span className="ml-2">Mis órdenes</span>
                   </Link>
                   <button
                     onClick={handleLogout}
-                    className="block px-4 py-2 hover:bg-gray-700 w-full text-left"
+                    className="flex items-center w-full px-4 py-2 hover:bg-gray-700 text-left text-sm transition-colors duration-300"
                   >
-                    <LogOut size={16} /> Logout
+                    <LogOut size={16} /> <span className="ml-2">Logout</span>
                   </button>
                 </div>
               )}
@@ -96,9 +107,9 @@ const Navbar: React.FC = () => {
           ) : (
             <Link
               href="/loginUser"
-              className="flex items-center gap-1 hover:underline"
+              className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
             >
-              <LogIn size={16} /> Login
+              <LogIn size={18} /> <span>Login</span>
             </Link>
           )}
         </div>

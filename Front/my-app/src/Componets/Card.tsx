@@ -42,14 +42,14 @@ export const Card: React.FC<CardProps> = ({ product }) => {
           className={`px-4 py-2 rounded-xl font-semibold text-amber-100 transition-colors duration-300 ${
             remainingStock === 0
               ? "bg-gray-400 cursor-not-allowed"
-              : "bg-red-800 hover:bg-green-800"
+              : "bg-red-800 hover:bg-red-900"
           }`}
         >
           Agregar al carrito
         </button>
         <button
           onClick={() => router.push(`/products/${product.id}`)}
-          className="bg-yellow-700 hover:bg-green-800 text-amber-100 px-4 py-2 rounded-xl font-semibold transition-colors duration-300"
+          className="bg-yellow-700  text-amber-100 px-4 py-2 rounded-xl font-semibold hover:bg-yellow-800 transition-colors duration-300"
         >
           Ver detalle
         </button>
