@@ -22,34 +22,34 @@ export const Card: React.FC<CardProps> = ({ product }) => {
   };
 
   return (
-    <div className="border-4 border-double p-2 rounded shadow-md hover:shadow-lg transition duration-300">
-      <div className="text-lg font-semibold">{product.name}</div>
-      <div className="text-gray-700">Precio: ${product.price}</div>
-      <div className="text-sm text-gray-500">{product.category.name}</div>
+    <div className="bg-amber-100 border-4 border-yellow-700 rounded-xl shadow-md p-4 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-sm duration-300">
       <img
         src={product.image}
         alt={product.name}
-        className="w-40 h-40 object-cover my-2 rounded"
+        className="w-full h-40 object-cover rounded-xl mb-4"
       />
-      <div className="text-sm text-gray-600 mb-2">
+      <h2 className="text-xl font-semibold text-red-800 mb-2">
+        {product.name}
+      </h2>
+      <p className="text-base text-yellow-700 mb-1">Precio: ${product.price}</p>
+      <p className="text-sm text-red-800 mb-2">{product.category.name}</p>
+      <p className="text-sm text-yellow-700 mb-4">
         Stock disponible: {remainingStock}
-      </div>
-
-      <div className="flex gap-2 mt-2">
+      </p>
+      <div className="flex gap-3 mb-4">
         <button
           onClick={handleAddToCart}
-          className={`px-3 py-1 rounded text-white transition ${
+          className={`px-4 py-2 rounded-xl font-semibold text-amber-100 transition-colors duration-300 ${
             remainingStock === 0
               ? "bg-gray-400 cursor-not-allowed"
-              : "bg-blue-500 hover:bg-blue-600"
+              : "bg-red-800 hover:bg-green-800"
           }`}
         >
           Agregar al carrito
         </button>
-
         <button
           onClick={() => router.push(`/products/${product.id}`)}
-          className="bg-gray-700 text-white px-3 py-1 rounded hover:bg-gray-800 transition"
+          className="bg-yellow-700 hover:bg-green-800 text-amber-100 px-4 py-2 rounded-xl font-semibold transition-colors duration-300"
         >
           Ver detalle
         </button>

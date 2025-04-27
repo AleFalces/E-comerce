@@ -43,57 +43,72 @@ const LoginUserForm: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-md mx-auto p-6 bg-amber-500 shadow rounded">
-      <h2 className="text-2xl font-semibold mb-4">Iniciar Sesión</h2>
-      <form onSubmit={handleSubmit} noValidate>
-        <label className="block mb-1" htmlFor="email">
-          Email
-        </label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleInput}
-          className={`w-full mb-2 p-2 border rounded ${
-            errors.email ? "border-red-500" : "border-gray-300"
-          }`}
-        />
-        {errors.email && (
-          <p className="text-red-600 text-sm mb-2">{errors.email}</p>
-        )}
+    <div className="flex justify-center items-center min-h-screen bg-amber-100 p-6">
+      <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8">
+        <h2 className="text-2xl font-semibold text-red-800 mb-6 text-center">
+          Iniciar Sesión
+        </h2>
+        <form onSubmit={handleSubmit} noValidate>
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block mb-1 text-yellow-700 font-medium"
+            >
+              Email
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              value={formData.email}
+              onChange={handleInput}
+              className={`w-full p-2 border-2 rounded-xl transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-800 ${
+                errors.email ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {errors.email && (
+              <p className="text-red-600 text-sm mt-1">{errors.email}</p>
+            )}
+          </div>
 
-        <label className="block mb-1" htmlFor="password">
-          Contraseña
-        </label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          value={formData.password}
-          onChange={handleInput}
-          className={`w-full mb-2 p-2 border rounded ${
-            errors.password ? "border-red-500" : "border-gray-300"
-          }`}
-        />
-        {errors.password && (
-          <p className="text-red-600 text-sm mb-2">{errors.password}</p>
-        )}
+          <div className="mb-4">
+            <label
+              htmlFor="password"
+              className="block mb-1 text-yellow-700 font-medium"
+            >
+              Contraseña
+            </label>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              value={formData.password}
+              onChange={handleInput}
+              className={`w-full p-2 border-2 rounded-xl transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-red-800 ${
+                errors.password ? "border-red-500" : "border-gray-300"
+              }`}
+            />
+            {errors.password && (
+              <p className="text-red-600 text-sm mt-1">{errors.password}</p>
+            )}
+          </div>
 
-        <div>
-          <p>
-            Don`t have an account?
-            <Link href="/registerUser">Sign up</Link>
-          </p>
-        </div>
+          <div className="mb-6 text-sm text-gray-700">
+            ¿No tienes cuenta?{" "}
+            <Link href="/registerUser" className="text-red-800 hover:underline">
+              Regístrate
+            </Link>
+          </div>
 
-        <button
-          type="submit"
-          className="w-full mt-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-        >
-          Login
-        </button>
-      </form>
+          <button
+            type="submit"
+            className="w-full py-3 bg-red-800 text-amber-100 font-semibold rounded-xl shadow-md hover:bg-green-800 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+            disabled={false}
+          >
+            Iniciar Sesión
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

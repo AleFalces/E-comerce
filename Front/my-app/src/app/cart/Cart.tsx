@@ -1,5 +1,4 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { getAllProducts } from "@/services/productsServices";
 import { IProduct } from "@/helpers/mockProducts";
@@ -21,9 +20,7 @@ const CartPage = () => {
 
   const [products, setProducts] = useState<IProduct[]>([]);
   const [user, setUser] = useState<IUser>();
-
   const productCounts = getCartCount();
-
   const router = useRouter();
 
   useEffect(() => {
@@ -110,15 +107,17 @@ const CartPage = () => {
   };
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-6">Carrito de Compras</h1>
+    <div className="p-4 font-sans">
+      <h1 className="text-3xl font-serif text-red-900 mb-8">
+        Carrito de Compras
+      </h1>
 
       {productsInCart.length === 0 ? (
         <div>
           <p>No hay productos en el carrito.</p>
           <button
             onClick={handleGoToProducts}
-            className="bg-gray-700 text-white px-3 py-1 rounded"
+            className="bg-red-800 hover:bg-green-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
           >
             Volver a productos
           </button>
@@ -130,42 +129,50 @@ const CartPage = () => {
             return (
               <div
                 key={product.id}
-                className="border rounded-lg shadow-md p-4 flex flex-col"
+                className="bg-amber-100 border-2 border-amber-800 rounded-2xl shadow-sm p-6 flex flex-col items-center transition-transform hover:scale-105 duration-300"
               >
                 <img
                   src={product.image}
                   alt={product.name}
-                  className="w-full h-40 object-cover mb-4 rounded"
+                  className="w-full h-48 object-cover rounded-2xl mb-4"
                 />
-                <h2 className="text-lg font-semibold">{product.name}</h2>
+                <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                  {product.name}
+                </h2>
                 <p className="text-sm text-gray-600 mb-2">
                   {product.description}
                 </p>
-                <p className="font-medium">Precio: ${product.price}</p>
-                <p>Cantidad: {quantity}</p>
-
-                <div className="flex items-center gap-2 mt-2">
+                <p className="text-base font-semibold mb-1">
+                  Precio: ${product.price}
+                </p>
+                <p className="text-sm text-gray-700 mb-1">
+                  Stock disponible: {product.stock}
+                </p>
+                <p className="text-sm text-gray-500 mb-4">
+                  Cantidad en carrito: {quantity}
+                </p>
+                <div className="flex gap-3 mt-4">
                   <button
                     onClick={() => addToCart(product.id, product.stock)}
-                    className="bg-green-500 text-white px-2 py-1 rounded hover:bg-green-600"
+                    className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-transform transform hover:scale-105 hover:bg-red-800 duration-300"
                   >
                     Agregar otro
                   </button>
                   <button
                     onClick={() => removeOneFromCart(product.id)}
-                    className="bg-yellow-500 text-white px-2 py-1 rounded hover:bg-yellow-600"
+                    className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-transform transform hover:scale-105 hover:bg-red-900 duration-300"
                   >
                     Eliminar Uno
                   </button>
                   <button
                     onClick={() => handleDeleteAll(product.id, product.name)}
-                    className="bg-red-600 text-white px-2 py-1 rounded hover:bg-red-700"
+                    className="bg-red-700 text-white py-2 px-4 rounded-2xl font-semibold transition-transform transform hover:scale-105 hover:bg-red-800 duration-300"
                   >
                     Eliminar todos
                   </button>
                 </div>
 
-                <p className="font-semibold text-blue-600 mt-2">
+                <p className="text-base font-semibold text-blue-600 mt-4">
                   Subtotal: ${product.price * quantity}
                 </p>
               </div>
@@ -176,20 +183,22 @@ const CartPage = () => {
 
       {productsInCart.length > 0 && (
         <div className="mt-8 flex flex-col gap-4">
-          <p className="text-xl font-bold">Total: ${totalPrice}</p>
+          <p className="text-xl font-semibold">Total: ${totalPrice}</p>
 
           <button
             onClick={handleClearCart}
-            className="bg-gray-800 text-white px-4 py-2 rounded"
+            className="bg-amber-800 hover:bg-green-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
           >
             Vaciar carrito
           </button>
 
           <button
             onClick={handleCheckout}
-            className="bg-blue-600 text-white px-4 py-2 rounded"
+            className="bg-red-900 hover:bg-green-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-transform transform hover:scale-105 duration-300"
           >
-            {user ? "Finalizar compra" : "Logueate para realizar tu reserva"}
+            {user
+              ? "Finalizar compra"
+              : "IR a login para continuar con tu reserva ➡️"}
           </button>
         </div>
       )}

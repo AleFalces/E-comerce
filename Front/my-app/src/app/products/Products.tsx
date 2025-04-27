@@ -26,33 +26,35 @@ const Products: React.FC = () => {
       : products.filter((p) => p.category.name === selectedCategory);
 
   return (
-    <div>
-      <div className="mb-4">
-        <label htmlFor="category" className="mr-2">
+    <div className="p-6 bg-amber-100 min-h-screen">
+      <div className="mb-6 mt-4 flex justify-center items-center gap-4">
+        <label htmlFor="category" className="text-red-800 font-semibold">
           Filtrar por categoría:
         </label>
         <select
           id="category"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="p-1 border rounded"
+          className="p-2 border-2 border-yellow-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-800"
         >
           <option value="all">Todas</option>
-          {categories.map((cat) => (
-            <option key={cat} value={cat}>
-              {cat}
+          {categories.map((category) => (
+            <option key={category} value={category}>
+              {category}
             </option>
           ))}
         </select>
       </div>
 
-      <div className="grid grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProducts.length ? (
           filteredProducts.map((product) => (
             <Card key={product.id} product={product} />
           ))
         ) : (
-          <p>No hay productos disponibles</p>
+          <p className="text-center text-yellow-700 font-medium">
+            No hay productos disponibles
+          </p>
         )}
       </div>
     </div>

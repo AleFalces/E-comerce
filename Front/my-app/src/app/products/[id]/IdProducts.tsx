@@ -6,45 +6,67 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import { useCart } from "@/Componets/CartContext";
 
-const IdProducts = () => {
+const ProductDetail: React.FC = () => {
   const { id } = useParams();
   const [product, setProduct] = useState<IProduct | null>(null);
   const { addToCart, getRemainingStock } = useCart();
   const router = useRouter();
 
   useEffect(() => {
-    if (typeof id === "string") {
-      getProductsById(id).then(setProduct);
-    }
+    if (typeof id === "string") getProductsById(id).then(setProduct);
   }, [id]);
 
-  if (!product) return <p>Loading...</p>;
+  if (!product) return <p className="text-center p-6">Cargando...</p>;
 
   const remainingStock = getRemainingStock(product.id, product.stock);
 
   return (
-    <div className="p-4">
-      <h1 className="text-xl font-bold">{product.name}</h1>
-      <p>{product.description}</p>
-      <p>Price: ${product.price}</p>
-      {product.image && <img src={product.image} alt={product.name} />}
-      <div>Stock disponible: {remainingStock}</div>
+    <div className="p-6 bg-amber-100 min-h-screen flex flex-col lg:flex-row gap-8">
+      {/* Imagen grande con transición */}
+      <div className="flex-1 flex justify-center items-center">
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full max-w-xl rounded-xl shadow-md transform transition-transform duration-700 ease-in-out hover:scale-105"
+        />
+      </div>
 
-      <button
-        onClick={() => addToCart(product.id, product.stock)}
-        disabled={remainingStock === 0}
-        className="mt-4 bg-green-600 text-white px-4 py-2 rounded disabled:opacity-50"
-      >
-        Agregar al carrito
-      </button>
+      {/* Detalles y acciones */}
+      <div className="flex-1 flex flex-col justify-start">
+        <h1 className="text-4xl font-bold text-red-800 mb-4">{product.name}</h1>
+        <p className="text-base text-yellow-700 mb-6">{product.description}</p>
+        <p className="text-2xl font-semibold text-yellow-700 mb-2">
+          Precio: ${product.price}
+        </p>
+        <p className="text-sm text-red-800 mb-4">
+          Categoria: {product.category.name}
+        </p>
+        <p className="text-sm text-yellow-700 mb-6">
+          Stock disponible: {remainingStock}
+        </p>
 
-      <button
-        onClick={() => router.push(`/products`)}
-        className="bg-gray-700 text-white px-3 py-1 rounded"
-      >
-        Volver a productos
-      </button>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <button
+            onClick={() => addToCart(product.id, product.stock)}
+            disabled={remainingStock === 0}
+            className={`px-6 py-3 rounded-xl font-semibold text-white transition-colors duration-300 \${
+              remainingStock === 0
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-red-800 hover:bg-green-800"
+            }`}
+          >
+            Agregar al carrito
+          </button>
+          <button
+            onClick={() => router.push(`/products`)}
+            className="px-6 py-3 rounded-xl font-semibold text-white bg-yellow-700 hover:bg-yellow-800 transition-colors duration-300"
+          >
+            Volver a productos
+          </button>
+        </div>
+      </div>
     </div>
   );
 };
-export default IdProducts;
+
+export default ProductDetail;
