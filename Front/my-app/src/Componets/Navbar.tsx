@@ -14,11 +14,12 @@ import {
   ChevronDown,
   ChevronUp,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const Navbar: React.FC = () => {
   const { user, logout } = useAuth();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
   const handleLogout = async () => {
     const confirmed = await confirmAction({
@@ -34,9 +35,30 @@ const Navbar: React.FC = () => {
     }
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    if (isDropdownOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
+
   return (
-    <nav className="bg-gray-900 text-white shadow-lg overflow-x-hidden">
-      <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between py-4 px-6">
+    <nav className="bg-gray-900 text-white shadow-lg z-50 relative">
+      <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between py-4 px-6 relative">
         {/* Logo */}
         <Link
           href="/"
@@ -46,7 +68,7 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* Navegación */}
-        <div className="flex flex-wrap items-center gap-6 text-sm max-w-full">
+        <div className="flex flex-wrap items-center gap-6 text-sm max-w-full relative">
           <Link
             href="/"
             className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
@@ -73,7 +95,7 @@ const Navbar: React.FC = () => {
           </Link>
 
           {user ? (
-            <div className="relative">
+            <div className="relative" ref={dropdownRef}>
               <button
                 onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                 className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300 focus:outline-none"
@@ -87,7 +109,7 @@ const Navbar: React.FC = () => {
                 )}
               </button>
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-40 bg-gray-800 rounded-lg shadow-md overflow-hidden">
+                <div className="absolute right-0 mt-2 w-40 bg-gray-800 rounded-lg shadow-lg overflow-hidden z-50">
                   <Link
                     href="/userOrders"
                     className="flex items-center px-4 py-2 hover:bg-gray-700 text-sm transition-colors duration-300"

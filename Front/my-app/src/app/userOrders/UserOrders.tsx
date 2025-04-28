@@ -53,7 +53,7 @@ const UserOrders: React.FC = () => {
           <p className="text-xl text-yellow-700 mb-4">No tienes órdenes</p>
           <button
             onClick={handleGoToProducts}
-            className="px-6 py-3 bg-red-800 text-amber-100 font-semibold rounded-xl shadow-md hover:bg-green-800 transition-colors duration-300"
+            className="px-6 py-3 bg-red-800 text-amber-100 font-semibold rounded-xl shadow-md hover:bg-red-900 transition-colors duration-300"
           >
             Volver a productos
           </button>

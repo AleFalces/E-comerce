@@ -117,7 +117,7 @@ const CartPage = () => {
           <p>No hay productos en el carrito.</p>
           <button
             onClick={handleGoToProducts}
-            className="bg-red-800 hover:bg-green-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
+            className="bg-red-800 hover:bg-red-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
           >
             Volver a productos
           </button>
@@ -151,22 +151,22 @@ const CartPage = () => {
                 <p className="text-sm text-gray-500 mb-4">
                   Cantidad en carrito: {quantity}
                 </p>
-                <div className="flex gap-3 mt-4">
+                <div className="flex flex-wrap justify-center gap-3 mt-4">
                   <button
                     onClick={() => addToCart(product.id, product.stock)}
-                    className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-transform transform hover:scale-105 hover:bg-red-800 duration-300"
+                    className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
                   >
                     Agregar otro
                   </button>
                   <button
                     onClick={() => removeOneFromCart(product.id)}
-                    className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-transform transform hover:scale-105 hover:bg-red-900 duration-300"
+                    className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
                   >
                     Eliminar Uno
                   </button>
                   <button
                     onClick={() => handleDeleteAll(product.id, product.name)}
-                    className="bg-red-700 text-white py-2 px-4 rounded-2xl font-semibold transition-transform transform hover:scale-105 hover:bg-red-800 duration-300"
+                    className="bg-red-700 text-white py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
                   >
                     Eliminar todos
                   </button>
@@ -187,14 +187,14 @@ const CartPage = () => {
 
           <button
             onClick={handleClearCart}
-            className="bg-amber-800 hover:bg-green-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
+            className="bg-amber-800 hover:bg-amber-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
           >
             Vaciar carrito
           </button>
 
           <button
             onClick={handleCheckout}
-            className="bg-red-900 hover:bg-green-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-transform transform hover:scale-105 duration-300"
+            className="bg-red-900 hover:bg-red-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
           >
             {user
               ? "Finalizar compra"
