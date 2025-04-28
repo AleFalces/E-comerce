@@ -136,19 +136,17 @@ const CartPage = () => {
                   alt={product.name}
                   className="w-full h-48 object-cover rounded-2xl mb-4"
                 />
-                <h2 className="text-lg font-semibold text-gray-800 mb-2">
+                <h2 className="text-lg font-semibold text-red-800 mb-2">
                   {product.name}
                 </h2>
-                <p className="text-sm text-gray-600 mb-2">
-                  {product.description}
-                </p>
-                <p className="text-base font-semibold mb-1">
+
+                <p className="text-base font-semibold text-red-800 mb-1">
                   Precio: ${product.price}
                 </p>
-                <p className="text-sm text-gray-700 mb-1">
+                <p className="text-sm text-yellow-700 mb-1">
                   Stock disponible: {product.stock}
                 </p>
-                <p className="text-sm text-gray-500 mb-4">
+                <p className="text-sm text-gray-900 mb-4">
                   Cantidad en carrito: {quantity}
                 </p>
                 <div className="flex flex-wrap justify-center gap-3 mt-4">
@@ -172,7 +170,7 @@ const CartPage = () => {
                   </button>
                 </div>
 
-                <p className="text-base font-semibold text-blue-600 mt-4">
+                <p className="text-base font-semibold text-red-800 mt-4">
                   Subtotal: ${product.price * quantity}
                 </p>
               </div>
