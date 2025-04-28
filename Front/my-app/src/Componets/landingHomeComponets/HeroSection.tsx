@@ -22,10 +22,8 @@ const HeroSection: React.FC = () => {
         height: "100vh",
       }}
     >
-      {/* Overlay to darken background for text legibility */}
       <div className="absolute inset-0  bg-opacity-60"></div>
 
-      {/* Text container with semi-transparent backdrop for better contrast */}
       <div className="relative text-center max-w-2xl bg-gray-900 bg-opacity-50 p-6 rounded-lg">
         <h1 className="text-4xl md:text-5xl font-extrabold text-amber-100 drop-shadow-lg">
           Bienvenido a nuestra tienda

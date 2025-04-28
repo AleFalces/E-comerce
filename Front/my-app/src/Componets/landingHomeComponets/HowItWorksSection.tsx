@@ -9,7 +9,6 @@ const HowItWorksSection: React.FC = () => {
         Cómo Funciona
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {/* Paso 1 */}
         <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center transition-transform duration-300 hover:scale-105">
           <div className="text-red-800 mb-4">
             <Search size={48} />
@@ -22,7 +21,6 @@ const HowItWorksSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Paso 2 */}
         <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center transition-transform duration-300 hover:scale-105">
           <div className="text-red-800 mb-4">
             <ShoppingCart size={48} />
@@ -35,7 +33,6 @@ const HowItWorksSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Paso 3 */}
         <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center transition-transform duration-300 hover:scale-105">
           <div className="text-red-800 mb-4">
             <CheckCircle size={48} />

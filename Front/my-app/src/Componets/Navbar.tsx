@@ -59,7 +59,6 @@ const Navbar: React.FC = () => {
   return (
     <nav className="bg-gray-900 text-white shadow-lg z-50 relative">
       <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between py-4 px-6 relative">
-        {/* Logo */}
         <Link
           href="/"
           className="text-2xl font-bold hover:text-amber-200 transition-colors duration-300"
@@ -67,7 +66,6 @@ const Navbar: React.FC = () => {
           SoundNest
         </Link>
 
-        {/* Navegación */}
         <div className="flex flex-wrap items-center gap-6 text-sm max-w-full relative">
           <Link
             href="/"

@@ -8,7 +8,6 @@ const FeaturesSection: React.FC = () => {
         Por qué elegirnos
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-        {/* Envío rápido */}
         <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center transition-transform duration-300 hover:scale-105">
           <div className="text-red-800 mb-4">
             <Truck size={48} />
@@ -21,7 +20,6 @@ const FeaturesSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Pago seguro */}
         <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center transition-transform duration-300 hover:scale-105">
           <div className="text-red-800 mb-4">
             <CreditCard size={48} />
@@ -34,7 +32,6 @@ const FeaturesSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Soporte 24/7 */}
         <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center transition-transform duration-300 hover:scale-105">
           <div className="text-red-800 mb-4">
             <Headphones size={48} />

@@ -9,7 +9,6 @@ const Footer: React.FC = () => {
   return (
     <footer className="bg-gray-900 text-white py-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-6">
-        {/* Tecnologías */}
         <div>
           <h2 className="text-xl text-white font-semibold mb-2 ">
             Tecnologías usadas
@@ -61,7 +60,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
         </div>
-        {/* Contacto */}
+
         <div>
           <h2 className="text-xl text-white font-semibold mb-2 ">Contacto</h2>
           <ul className="text-sm text-gray-300 space-y-2">

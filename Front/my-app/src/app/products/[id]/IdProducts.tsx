@@ -22,7 +22,6 @@ const ProductDetail: React.FC = () => {
 
   return (
     <div className="p-6 bg-amber-100 min-h-screen flex flex-col lg:flex-row gap-8">
-      {/* Imagen grande con transición */}
       <div className="flex-1 flex justify-center items-center">
         <img
           src={product.image}
@@ -31,7 +30,6 @@ const ProductDetail: React.FC = () => {
         />
       </div>
 
-      {/* Detalles y acciones */}
       <div className="flex-1 flex flex-col justify-start">
         <h1 className="text-4xl font-bold text-red-800 mb-4">{product.name}</h1>
         <p className="text-base text-yellow-700 mb-6">{product.description}</p>
