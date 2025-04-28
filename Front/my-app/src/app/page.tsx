@@ -6,7 +6,7 @@ import TestimonialsSection from "@/Componets/landingHomeComponets/TestimonialsSe
 
 export default function Home() {
   return (
-    <main className="flex flex-col gap-12 p-4">
+    <main className="container mx-auto px-4 flex flex-col gap-12 p-4">
       <HeroSection />
       <FeasturesStection />
       <HowItWorksSection />

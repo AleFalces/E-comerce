@@ -35,8 +35,8 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gray-900 text-white shadow-lg">
-      <div className="max-w-6xl mx-auto flex items-center justify-between py-4 px-6">
+    <nav className="bg-gray-900 text-white shadow-lg overflow-x-hidden">
+      <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-between py-4 px-6">
         {/* Logo */}
         <Link
           href="/"
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
         </Link>
 
         {/* Navegación */}
-        <div className="flex items-center space-x-6 text-sm">
+        <div className="flex flex-wrap items-center gap-6 text-sm max-w-full">
           <Link
             href="/"
             className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
                 )}
               </button>
               {isDropdownOpen && (
-                <div className="absolute right-0 mt-2 w-40 bg-gray-800 rounded-lg shadow-md">
+                <div className="absolute right-0 mt-2 w-40 bg-gray-800 rounded-lg shadow-md overflow-hidden">
                   <Link
                     href="/userOrders"
                     className="flex items-center px-4 py-2 hover:bg-gray-700 text-sm transition-colors duration-300"
