@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import { Mail, Linkedin, ChevronDown, ChevronUp } from "lucide-react";
 
@@ -7,17 +8,16 @@ const Footer: React.FC = () => {
   const [showBackend, setShowBackend] = useState(false);
 
   return (
-    <footer className="bg-gray-900 text-white py-8">
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6 px-6">
+    <footer className="bg-gray-900 text-white py-8 mt-8">
+      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
         <div>
-          <h2 className="text-xl text-white font-semibold mb-2 ">
-            Tecnologías usadas
-          </h2>
-          <div>
-            <div className="flex items-start space-x-4 mb-4">
+          <h2 className="text-xl font-semibold mb-4">Tecnologías usadas</h2>
+
+          <div className="space-y-4">
+            <div>
               <button
                 onClick={() => setShowFrontend(!showFrontend)}
-                className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300 focus:outline-none"
+                className="flex items-center gap-2 hover:text-amber-200 transition-colors focus:outline-none"
               >
                 <span>Frontend</span>
                 {showFrontend ? (
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
                 )}
               </button>
               {showFrontend && (
-                <ul className="list-disc text-sm text-gray-300 pl-5">
+                <ul className="list-disc ml-6 mt-2 text-gray-300 text-sm space-y-1">
                   <li>TypeScript</li>
                   <li>Next.js</li>
                   <li>Tailwind CSS</li>
@@ -36,10 +36,11 @@ const Footer: React.FC = () => {
                 </ul>
               )}
             </div>
-            <div className="flex items-start space-x-4">
+
+            <div>
               <button
                 onClick={() => setShowBackend(!showBackend)}
-                className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300 focus:outline-none"
+                className="flex items-center gap-2 hover:text-amber-200 transition-colors focus:outline-none"
               >
                 <span>Backend</span>
                 {showBackend ? (
@@ -49,7 +50,7 @@ const Footer: React.FC = () => {
                 )}
               </button>
               {showBackend && (
-                <ul className="list-disc text-sm text-gray-300 pl-5">
+                <ul className="list-disc ml-6 mt-2 text-gray-300 text-sm space-y-1">
                   <li>Express</li>
                   <li>TypeScript</li>
                   <li>PostgreSQL</li>
@@ -61,10 +62,11 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
+        {/* Contacto */}
         <div>
-          <h2 className="text-xl text-white font-semibold mb-2 ">Contacto</h2>
-          <ul className="text-sm text-gray-300 space-y-2">
-            <li className="flex items-center space-x-2 hover:text-amber-200 transition-colors duration-300">
+          <h2 className="text-xl font-semibold mb-4">Contacto</h2>
+          <ul className="space-y-2 text-gray-300 text-sm">
+            <li className="flex items-center gap-2 hover:text-amber-200">
               <Linkedin size={16} />
               <a
                 href="https://www.linkedin.com/in/alexis-falces-95b892252/"
@@ -74,7 +76,7 @@ const Footer: React.FC = () => {
                 Alexis Falces
               </a>
             </li>
-            <li className="flex items-center space-x-2 hover:text-amber-200 transition-colors duration-300">
+            <li className="flex items-center gap-2 hover:text-amber-200">
               <Mail size={16} />
               <a href="mailto:alefalces@gmail.com">alefalces@gmail.com</a>
             </li>

@@ -18,10 +18,15 @@ export const confirmAction = async ({
     text,
     icon,
     showCancelButton: true,
-    confirmButtonColor: "#3085d6",
-    cancelButtonColor: "#d33",
     confirmButtonText,
     cancelButtonText,
+    customClass: {
+      confirmButton:
+        "bg-amber-800 hover:bg-amber-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300",
+      cancelButton:
+        "bg-red-900 hover:bg-red-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300",
+    },
+    buttonsStyling: false,
   });
 
   return result.isConfirmed;
@@ -33,6 +38,11 @@ export const showSuccess = (title: string, text = "") => {
     text,
     icon: "success",
     confirmButtonText: "OK",
+    customClass: {
+      confirmButton:
+        "bg-amber-200 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-amber-300",
+    },
+    buttonsStyling: false,
   });
 };
 
@@ -42,5 +52,10 @@ export const showError = (title: string, text = "") => {
     text,
     icon: "error",
     confirmButtonText: "OK",
+    customClass: {
+      confirmButton:
+        "bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-amber-300",
+    },
+    buttonsStyling: false,
   });
 };

@@ -32,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex min-h-screen flex-col`}
       >
         <Toaster
           position="top-center"
@@ -56,7 +56,7 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <Navbar />
-            {children}
+            <div className="flex-grow">{children}</div>
             <Footer />
           </CartProvider>
         </AuthProvider>
