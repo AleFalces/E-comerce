@@ -30,7 +30,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
       <h2 className="text-xl font-semibold text-red-800 mb-2">
         {product.name}
       </h2>
-      <p className="text-base text-yellow-700 mb-1">Precio: ${product.price}</p>
+      <p className="text-base text-yellow-700 mb-1">Price: ${product.price}</p>
       <p className="text-sm text-red-800 mb-2">{product.category.name}</p>
       <p className="text-sm text-yellow-700 mb-4">
         Available Stock: {remainingStock}
