@@ -20,6 +20,7 @@ const CartPage = () => {
 
   const [products, setProducts] = useState<IProduct[]>([]);
   const [user, setUser] = useState<IUser>();
+  const [loading, setLoading] = useState(true);
   const productCounts = getCartCount();
   const router = useRouter();
 
@@ -39,8 +40,10 @@ const CartPage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true);
       const data = await getAllProducts();
       setProducts(data);
+      setLoading(false);
     };
 
     fetchProducts();
@@ -112,93 +115,100 @@ const CartPage = () => {
         Carrito de Compras
       </h1>
 
-      {productsInCart.length === 0 ? (
-        <div>
-          <p>No hay productos en el carrito.</p>
+      {loading ? (
+        <div className="flex flex-col items-center justify-center py-20">
+          <div className="w-12 h-12 border-4 border-yellow-700 border-t-transparent rounded-full animate-spin mb-4"></div>
+          <p className="text-yellow-700 font-semibold">Cargando productos...</p>
+        </div>
+      ) : productsInCart.length === 0 ? (
+        <div className="text-center py-12">
+          <p className="text-xl font-medium text-yellow-800 mb-6">
+            No hay productos en el carrito.
+          </p>
           <button
             onClick={handleGoToProducts}
             className="bg-red-800 hover:bg-red-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
           >
-            Volver a productos
+            Explora Nuestros Producos
           </button>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {productsInCart.map((product) => {
-            const quantity = productCounts[product.id];
-            return (
-              <div
-                key={product.id}
-                className="bg-amber-100 border-2 border-amber-800 rounded-2xl shadow-sm p-6 flex flex-col items-center transition-transform hover:scale-105 duration-300"
-              >
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-48 object-cover rounded-2xl mb-4"
-                />
-                <h2 className="text-lg font-semibold text-red-800 mb-2">
-                  {product.name}
-                </h2>
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {productsInCart.map((product) => {
+              const quantity = productCounts[product.id];
+              return (
+                <div
+                  key={product.id}
+                  className="bg-amber-100 border-2 border-amber-800 rounded-2xl shadow-sm p-6 flex flex-col items-center transition-transform hover:scale-105 duration-300"
+                >
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-48 object-cover rounded-2xl mb-4"
+                  />
+                  <h2 className="text-lg font-semibold text-red-800 mb-2">
+                    {product.name}
+                  </h2>
 
-                <p className="text-base font-semibold text-red-800 mb-1">
-                  Precio: ${product.price}
-                </p>
-                <p className="text-sm text-yellow-700 mb-1">
-                  Stock disponible: {product.stock}
-                </p>
-                <p className="text-sm text-gray-900 mb-4">
-                  Cantidad en carrito: {quantity}
-                </p>
-                <div className="flex flex-wrap justify-center gap-3 mt-4">
-                  <button
-                    onClick={() => addToCart(product.id, product.stock)}
-                    className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
-                  >
-                    Agregar otro
-                  </button>
-                  <button
-                    onClick={() => removeOneFromCart(product.id)}
-                    className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
-                  >
-                    Eliminar Uno
-                  </button>
-                  <button
-                    onClick={() => handleDeleteAll(product.id, product.name)}
-                    className="bg-red-700 text-white py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
-                  >
-                    Eliminar todos
-                  </button>
+                  <p className="text-base font-semibold text-red-800 mb-1">
+                    Precio: ${product.price}
+                  </p>
+                  <p className="text-sm text-yellow-700 mb-1">
+                    Stock disponible: {product.stock}
+                  </p>
+                  <p className="text-sm text-gray-900 mb-4">
+                    Cantidad en carrito: {quantity}
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-3 mt-4">
+                    <button
+                      onClick={() => addToCart(product.id, product.stock)}
+                      className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
+                    >
+                      Agregar otro
+                    </button>
+                    <button
+                      onClick={() => removeOneFromCart(product.id)}
+                      className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
+                    >
+                      Eliminar Uno
+                    </button>
+                    <button
+                      onClick={() => handleDeleteAll(product.id, product.name)}
+                      className="bg-red-700 text-white py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
+                    >
+                      Eliminar todos
+                    </button>
+                  </div>
+
+                  <p className="text-base font-semibold text-red-800 mt-4">
+                    Subtotal: ${product.price * quantity}
+                  </p>
                 </div>
+              );
+            })}
+          </div>
 
-                <p className="text-base font-semibold text-red-800 mt-4">
-                  Subtotal: ${product.price * quantity}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      )}
+          <div className="mt-8 flex flex-col gap-4">
+            <p className="text-xl font-semibold">Total: ${totalPrice}</p>
 
-      {productsInCart.length > 0 && (
-        <div className="mt-8 flex flex-col gap-4">
-          <p className="text-xl font-semibold">Total: ${totalPrice}</p>
+            <button
+              onClick={handleClearCart}
+              className="bg-amber-800 hover:bg-amber-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
+            >
+              Vaciar carrito
+            </button>
 
-          <button
-            onClick={handleClearCart}
-            className="bg-amber-800 hover:bg-amber-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
-          >
-            Vaciar carrito
-          </button>
-
-          <button
-            onClick={handleCheckout}
-            className="bg-red-900 hover:bg-red-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
-          >
-            {user
-              ? "Finalizar compra"
-              : "IR a login para continuar con tu reserva ➡️"}
-          </button>
-        </div>
+            <button
+              onClick={handleCheckout}
+              className="bg-red-900 hover:bg-red-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
+            >
+              {user
+                ? "Finalizar compra"
+                : "IR a login para continuar con tu reserva ➡️"}
+            </button>
+          </div>
+        </>
       )}
     </div>
   );

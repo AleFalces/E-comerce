@@ -4,15 +4,23 @@ import { useState, useEffect } from "react";
 import { getAllProducts } from "@/services/productsServices";
 import { IProduct } from "@/helpers/mockProducts";
 import Card from "@/Componets/Card";
+import { Loader2 } from "lucide-react"; // Ícono de carga
 
 const Products: React.FC = () => {
   const [products, setProducts] = useState<IProduct[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const data = await getAllProducts();
-      setProducts(data);
+      try {
+        const data = await getAllProducts();
+        setProducts(data);
+      } catch (error) {
+        console.error("Error al cargar productos:", error);
+      } finally {
+        setIsLoading(false);
+      }
     };
 
     fetchProducts();
@@ -46,17 +54,23 @@ const Products: React.FC = () => {
         </select>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {filteredProducts.length ? (
-          filteredProducts.map((product) => (
-            <Card key={product.id} product={product} />
-          ))
-        ) : (
-          <p className="text-center text-yellow-700 font-medium">
-            No hay productos disponibles
-          </p>
-        )}
-      </div>
+      {isLoading ? (
+        <div className="flex justify-center items-center h-64">
+          <Loader2 className="animate-spin h-12 w-12 text-yellow-800" />
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredProducts.length ? (
+            filteredProducts.map((product) => (
+              <Card key={product.id} product={product} />
+            ))
+          ) : (
+            <p className="col-span-full text-center text-yellow-800 font-semibold text-xl bg-yellow-200 p-6 rounded-2xl shadow-md">
+              No hay productos disponibles
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 };

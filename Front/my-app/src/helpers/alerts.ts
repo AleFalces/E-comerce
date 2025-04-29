@@ -22,9 +22,9 @@ export const confirmAction = async ({
     cancelButtonText,
     customClass: {
       confirmButton:
-        "bg-amber-800 hover:bg-amber-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300",
+        "mr-3 bg-amber-800 hover:bg-amber-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300",
       cancelButton:
-        "bg-red-900 hover:bg-red-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300",
+        "ml-3 bg-red-900 hover:bg-red-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300",
     },
     buttonsStyling: false,
   });
@@ -40,7 +40,7 @@ export const showSuccess = (title: string, text = "") => {
     confirmButtonText: "OK",
     customClass: {
       confirmButton:
-        "bg-amber-200 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-amber-300",
+        "bg-amber-600  hover:bg-amber-200 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-amber-300",
     },
     buttonsStyling: false,
   });

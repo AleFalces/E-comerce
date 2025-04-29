@@ -15,8 +15,7 @@ const HeroSection: React.FC = () => {
         isVisible ? "opacity-100" : "opacity-0"
       }`}
       style={{
-        backgroundImage:
-          "url(https://musicaymercado.org/wp-content/uploads/2018/07/DANI-2-scaled.jpg)",
+        backgroundImage: "url(/instruments.jpg)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         height: "100vh",

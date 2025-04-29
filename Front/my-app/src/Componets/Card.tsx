@@ -18,7 +18,6 @@ export const Card: React.FC<CardProps> = ({ product }) => {
     }
 
     addToCart(product.id, product.stock);
-    toast.success("Producto agregado al carrito");
   };
 
   return (

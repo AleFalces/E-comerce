@@ -43,6 +43,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       const newCart = [...cartIds];
       newCart.splice(index, 1);
       setCartIds(newCart);
+      toast.success("Producto eliminado correctamente");
     }
   };
 
