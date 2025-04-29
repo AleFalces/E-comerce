@@ -9,7 +9,6 @@ import { Product } from "../entities/Product";
 dotenv.config();
 
 const isProduction = process.env.NODE_ENV === "production";
-console.log(process.env.NODE_ENV);
 
 export const AppDataSource = new DataSource(
   isProduction
