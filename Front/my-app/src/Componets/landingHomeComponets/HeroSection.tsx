@@ -23,7 +23,10 @@ const HeroSection: React.FC = () => {
     >
       <div className="absolute inset-0  bg-opacity-60"></div>
 
-      <div className="relative text-center max-w-2xl bg-gray-900 bg-opacity-50 p-6 rounded-lg">
+      <div
+        className="relative text-center max-w-2xl p-6 rounded-lg"
+        style={{ backgroundColor: "rgba(17, 24, 39, 0.5)" }} // gray-900 con 50% de opacidad
+      >
         <h1 className="text-4xl md:text-5xl font-extrabold text-amber-100 drop-shadow-lg">
           Welcome to our store
         </h1>
