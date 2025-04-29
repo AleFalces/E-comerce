@@ -25,7 +25,7 @@ const HeroSection: React.FC = () => {
 
       <div
         className="relative text-center max-w-2xl p-6 rounded-lg"
-        style={{ backgroundColor: "rgba(17, 24, 39, 0.5)" }} // gray-900 con 50% de opacidad
+        style={{ backgroundColor: "rgba(17, 24, 39, 0.5)" }}
       >
         <h1 className="text-4xl md:text-5xl font-extrabold text-amber-100 drop-shadow-lg">
           Welcome to our store
