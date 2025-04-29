@@ -45,7 +45,7 @@ const Products: React.FC = () => {
           onChange={(e) => setSelectedCategory(e.target.value)}
           className="p-2 border-2 border-yellow-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-800"
         >
-          <option value="all">Todas</option>
+          <option value="all">All Categories</option>
           {categories.map((category) => (
             <option key={category} value={category}>
               {category}
