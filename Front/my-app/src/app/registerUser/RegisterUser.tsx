@@ -34,9 +34,9 @@ const RegisterUser: React.FC = () => {
       return;
     }
     await toast.promise(registerUserService(registerData), {
-      loading: "Procesando registro…",
-      success: "¡Registrado correctamente! ✅",
-      error: "Error al registrar tus datos 😣",
+      loading: "Processing registration...",
+      success: "¡Successfully registered! ✅",
+      error: "Error registering your details😣",
     });
     router.push("/loginUser");
   };

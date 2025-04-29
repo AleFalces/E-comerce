@@ -35,9 +35,9 @@ const LoginUserForm: React.FC = () => {
     }
 
     await toast.promise(loginUser(formData), {
-      loading: "Verificando credenciales…",
-      success: "¡Bienvenido de vuelta! 👋",
-      error: "Credenciales inválidas, inténtalo de nuevo.",
+      loading: "Verifying credentials…",
+      success: "¡Welcome back! 👋",
+      error: "Invalid credentials, please try again.",
     });
     router.push("/");
   };

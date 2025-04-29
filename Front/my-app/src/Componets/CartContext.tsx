@@ -34,7 +34,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
     const count = cartIds.filter((itemId) => itemId === id).length;
     if (count >= stock) return;
     setCartIds((prev) => [...prev, id]);
-    toast.success("Producto añadido al carrito");
+    toast.success("Product added to cart");
   };
 
   const removeOneFromCart = (id: number) => {
@@ -43,7 +43,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({
       const newCart = [...cartIds];
       newCart.splice(index, 1);
       setCartIds(newCart);
-      toast.success("Producto eliminado correctamente");
+      toast.success("Product successfully removed");
     }
   };
 

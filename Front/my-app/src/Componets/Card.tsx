@@ -13,7 +13,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
 
   const handleAddToCart = () => {
     if (remainingStock === 0) {
-      toast.error("No hay suficiente stock disponible");
+      toast.error("Not enough stock available");
       return;
     }
 

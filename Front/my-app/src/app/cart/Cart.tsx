@@ -68,19 +68,19 @@ const CartPage = () => {
       return;
     }
     const confirmed = await confirmAction({
-      title: "¿Confirmar compra?",
-      text: `Estás a punto de realizar una compra con ${cartIds.length} productos. ¿Deseas continuar?`,
-      confirmButtonText: "Sí, confirmar compra",
+      title: "¿Confirm Purchase?",
+      text: `You are about to make a purchase for: $ ${totalPrice}. Do you wish to continue?`,
+      confirmButtonText: "Sí, Confirm",
     });
     if (!confirmed) return;
 
     try {
       await orderService({ products: cartIds });
-      showSuccess("Compra realizada con éxito");
+      showSuccess("Purchase successfu");
       clearCart();
       router.push("/products");
     } catch (error) {
-      showError("Error al procesar la compra");
+      showError("Error processing the purchase");
       console.error(error);
     }
   };
