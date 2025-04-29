@@ -37,8 +37,8 @@ const AboutPage: React.FC = () => {
         `With experience in building full-stack web applications using modern technologies like React, Next.js, TypeScript, and Node.js, I focus on creating clean, responsive, and high-performance solutions.`,
         `Whether you're a small business, a startup, or an individual with an idea, I’d love to hear from you.`,
         `📍 Based in Córdoba, Argentina – available for remote work worldwide.`,
-        `✉️ Email: alexisfalces.dev@gmail.com`,
-        `🔗 LinkedIn: linkedin.com/in/alexis-falces-95b892252`,
+        `✉️ Email: alefalces@gmail.com`,
+        `🔗 LinkedIn: https://www.linkedin.com/in/alexis-falces-95b892252/`,
       ],
     },
   ];
