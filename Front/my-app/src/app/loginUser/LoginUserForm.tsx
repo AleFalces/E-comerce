@@ -46,7 +46,7 @@ const LoginUserForm: React.FC = () => {
     <div className="flex justify-center items-center min-h-screen bg-amber-100 p-6">
       <div className="w-full max-w-md bg-white rounded-xl shadow-md p-8">
         <h2 className="text-2xl font-semibold text-red-800 mb-6 text-center">
-          Iniciar Sesión
+          Log In
         </h2>
         <form onSubmit={handleSubmit} noValidate>
           <div className="mb-4">
@@ -76,7 +76,7 @@ const LoginUserForm: React.FC = () => {
               htmlFor="password"
               className="block mb-1 text-yellow-700 font-medium"
             >
-              Contraseña
+              Password
             </label>
             <input
               id="password"
@@ -94,9 +94,9 @@ const LoginUserForm: React.FC = () => {
           </div>
 
           <div className="mb-6 text-sm text-gray-700">
-            ¿No tienes cuenta?{" "}
+            ¿Don`t have an account?{" "}
             <Link href="/registerUser" className="text-red-800 hover:underline">
-              Regístrate
+              Sign Up
             </Link>
           </div>
 
@@ -105,7 +105,7 @@ const LoginUserForm: React.FC = () => {
             className="w-full py-3 bg-red-800 text-amber-100 font-semibold rounded-xl shadow-md hover:bg-red-900 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             disabled={false}
           >
-            Iniciar Sesión
+            Log In
           </button>
         </form>
       </div>

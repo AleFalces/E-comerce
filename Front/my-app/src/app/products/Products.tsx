@@ -37,7 +37,7 @@ const Products: React.FC = () => {
     <div className="p-6 bg-amber-100 min-h-screen">
       <div className="mb-6 mt-4 flex justify-center items-center gap-4">
         <label htmlFor="category" className="text-red-800 font-semibold">
-          Filtrar por categoría:
+          Filter by Category:
         </label>
         <select
           id="category"
@@ -66,7 +66,7 @@ const Products: React.FC = () => {
             ))
           ) : (
             <p className="col-span-full text-center text-yellow-800 font-semibold text-xl bg-yellow-200 p-6 rounded-2xl shadow-md">
-              No hay productos disponibles
+              There are no products available at the moment
             </p>
           )}
         </div>

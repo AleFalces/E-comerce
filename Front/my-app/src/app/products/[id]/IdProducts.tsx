@@ -34,13 +34,13 @@ const ProductDetail: React.FC = () => {
         <h1 className="text-4xl font-bold text-red-800 mb-4">{product.name}</h1>
         <p className="text-base text-yellow-700 mb-6">{product.description}</p>
         <p className="text-2xl font-semibold text-yellow-700 mb-2">
-          Precio: ${product.price}
+          Price: ${product.price}
         </p>
         <p className="text-sm text-red-800 mb-4">
-          Categoria: {product.category.name}
+          Category: {product.category.name}
         </p>
         <p className="text-sm text-yellow-700 mb-6">
-          Stock disponible: {remainingStock}
+          Available Stock: {remainingStock}
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4">
@@ -49,13 +49,13 @@ const ProductDetail: React.FC = () => {
             disabled={remainingStock === 0}
             className={`px-6 py-3 rounded-xl font-semibold text-white bg-red-800 hover:bg-red-900 transition-colors duration-300 `}
           >
-            Agregar al carrito
+            Add to Cart
           </button>
           <button
             onClick={() => router.push(`/products`)}
             className="px-6 py-3 rounded-xl font-semibold text-white bg-yellow-700 hover:bg-yellow-800 transition-colors duration-300"
           >
-            Volver a productos
+            Back to Products
           </button>
         </div>
       </div>

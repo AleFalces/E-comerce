@@ -25,10 +25,10 @@ const HeroSection: React.FC = () => {
 
       <div className="relative text-center max-w-2xl bg-gray-900 bg-opacity-50 p-6 rounded-lg">
         <h1 className="text-4xl md:text-5xl font-extrabold text-amber-100 drop-shadow-lg">
-          Bienvenido a nuestra tienda
+          Welcome to our store
         </h1>
         <p className="mt-4 text-lg md:text-xl text-amber-200 drop-shadow-lg">
-          Explora los instrumentos más increíbles, solo aquí.
+          Explore the most incredible instruments, only here
         </p>
       </div>
     </section>

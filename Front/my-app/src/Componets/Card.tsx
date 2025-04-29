@@ -33,7 +33,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
       <p className="text-base text-yellow-700 mb-1">Precio: ${product.price}</p>
       <p className="text-sm text-red-800 mb-2">{product.category.name}</p>
       <p className="text-sm text-yellow-700 mb-4">
-        Stock disponible: {remainingStock}
+        Available Stock: {remainingStock}
       </p>
       <div className="flex gap-3 mb-4">
         <button
@@ -44,13 +44,13 @@ export const Card: React.FC<CardProps> = ({ product }) => {
               : "bg-red-800 hover:bg-red-900"
           }`}
         >
-          Agregar al carrito
+          Add to Cart
         </button>
         <button
           onClick={() => router.push(`/products/${product.id}`)}
           className="bg-yellow-700  text-amber-100 px-4 py-2 rounded-xl font-semibold hover:bg-yellow-800 transition-colors duration-300"
         >
-          Ver detalle
+          View Details
         </button>
       </div>
     </div>

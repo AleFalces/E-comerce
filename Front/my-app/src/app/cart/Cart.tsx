@@ -111,25 +111,23 @@ const CartPage = () => {
 
   return (
     <div className="p-4 font-sans">
-      <h1 className="text-3xl font-serif text-red-900 mb-8">
-        Carrito de Compras
-      </h1>
+      <h1 className="text-3xl font-serif text-red-900 mb-8">Shopping Cart</h1>
 
       {loading ? (
         <div className="flex flex-col items-center justify-center py-20">
           <div className="w-12 h-12 border-4 border-yellow-700 border-t-transparent rounded-full animate-spin mb-4"></div>
-          <p className="text-yellow-700 font-semibold">Cargando productos...</p>
+          <p className="text-yellow-700 font-semibold">Loading Poducts...</p>
         </div>
       ) : productsInCart.length === 0 ? (
         <div className="text-center py-12">
           <p className="text-xl font-medium text-yellow-800 mb-6">
-            No hay productos en el carrito.
+            There are no products added to the cart.
           </p>
           <button
             onClick={handleGoToProducts}
             className="bg-red-800 hover:bg-red-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
           >
-            Explora Nuestros Producos
+            Explore Our Products
           </button>
         </div>
       ) : (
@@ -152,32 +150,32 @@ const CartPage = () => {
                   </h2>
 
                   <p className="text-base font-semibold text-red-800 mb-1">
-                    Precio: ${product.price}
+                    Price: ${product.price}
                   </p>
                   <p className="text-sm text-yellow-700 mb-1">
-                    Stock disponible: {product.stock}
+                    Stock: {product.stock}
                   </p>
                   <p className="text-sm text-gray-900 mb-4">
-                    Cantidad en carrito: {quantity}
+                    Quantity in cart: {quantity}
                   </p>
                   <div className="flex flex-wrap justify-center gap-3 mt-4">
                     <button
                       onClick={() => addToCart(product.id, product.stock)}
                       className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
                     >
-                      Agregar otro
+                      Add another
                     </button>
                     <button
                       onClick={() => removeOneFromCart(product.id)}
                       className="bg-red-900 text-amber-100 py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
                     >
-                      Eliminar Uno
+                      Delete One
                     </button>
                     <button
                       onClick={() => handleDeleteAll(product.id, product.name)}
                       className="bg-red-700 text-white py-2 px-4 rounded-2xl font-semibold transition-colors hover:bg-red-800 duration-300"
                     >
-                      Eliminar todos
+                      Delete all
                     </button>
                   </div>
 
@@ -196,7 +194,7 @@ const CartPage = () => {
               onClick={handleClearCart}
               className="bg-amber-800 hover:bg-amber-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
             >
-              Vaciar carrito
+              Empty Cart
             </button>
 
             <button
@@ -204,8 +202,8 @@ const CartPage = () => {
               className="bg-red-900 hover:bg-red-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300"
             >
               {user
-                ? "Finalizar compra"
-                : "IR a login para continuar con tu reserva ➡️"}
+                ? "Complete Purchase"
+                : "Log in to your account to reserve these products"}
             </button>
           </div>
         </>

@@ -6,34 +6,34 @@ const AboutPage: React.FC = () => {
       <div className="max-w-4xl mx-auto space-y-12">
         {[
           {
-            title: "🎵 Nuestra Pasión por la Música",
+            title: "🎵 Our Passion for Music",
             content: [
-              `En SoundNest Instruments, la música es nuestro motor. Fundada por músicos para músicos, entendemos la importancia de encontrar el instrumento ideal y seguir mejorando tu sonido.`,
-              `Nuestra misión es ofrecer una experiencia de compra fácil, rápida y segura, con un equipo comprometido en brindarte el mejor servicio.`,
+              `At SoundNest Instruments, music is our driving force. Founded by musicians for musicians, we understand the importance of finding the perfect instrument and continuously improving your sound.`,
+              `Our mission is to provide an easy, fast, and secure shopping experience, with a team dedicated to offering you the best service.`,
             ],
           },
           {
-            title: "🎸 Selección Cuidadosamente Curada",
+            title: "🎸 Carefully Curated Selection",
             content: [
-              `Nos especializamos en guitarras, bajos, baterías y accesorios esenciales como cuerdas y púas. Cada producto es seleccionado por su tono, durabilidad y rendimiento.`,
-              `Ya sea que estés armando tu primer setup o actualizando tu equipo, aquí encontrarás lo que necesitas para tocar al máximo.`,
+              `We specialize in guitars, basses, drums, and essential accessories like strings and picks. Each product is selected for its tone, durability, and performance.`,
+              `Whether you're setting up your first rig or upgrading your gear, you'll find what you need to play at your best here.`,
             ],
           },
           {
-            title: "🥁 Soporte para Cada Músico",
+            title: "🥁 Support for Every Musician",
             content: [
-              `Ofrecemos recomendaciones personalizadas, recursos para principiantes y consejos de expertos para mantener tus instrumentos en óptimas condiciones.`,
-              `Al comprar con nosotros, te unes a la comunidad SoundNest, donde tu pasión es la nuestra.`,
+              `We offer personalized recommendations, resources for beginners, and expert tips to keep your instruments in top condition.`,
+              `By shopping with us, you become part of the SoundNest community, where your passion is our passion.`,
             ],
           },
           {
-            title: "📬 Contáctanos",
+            title: "📬 Contact Us",
             content: [
-              `Contáctanos: ¿Tienes preguntas o necesitas ayuda para elegir el equipo adecuado? ¡Estamos aquí para ti!`,
-              `Contáctanos: Email: support@soundnestmusic.com`,
-              `Contáctanos: Teléfono: +1 (555) 123-4567`,
-              `Contáctanos: Dirección: 221 Harmony Lane, Melody City, NY, USA`,
-              `Contáctanos: Horario: Lun-Vie: 9am - 6pm (EST)`,
+              `Contact Us: Do you have questions or need help choosing the right equipment? We're here for you!`,
+              `Contact Us: Email: support@soundnestmusic.com`,
+              `Contact Us: Phone: +1 (555) 123-4567`,
+              `Contact Us: Address: 221 Harmony Lane, Melody City, NY, USA`,
+              `Contact Us: Hours: Mon-Fri: 9am - 6pm (EST)`,
             ],
           },
         ].map((section) => (

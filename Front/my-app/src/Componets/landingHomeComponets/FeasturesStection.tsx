@@ -5,7 +5,7 @@ const FeaturesSection: React.FC = () => {
   return (
     <section className="py-16 px-4 bg-amber-100">
       <h2 className="text-3xl font-bold text-red-800 text-center mb-12">
-        Por qué elegirnos
+        Why Choose Us
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         <div className="bg-white p-6 rounded-xl shadow-md flex flex-col items-center transition-transform duration-300 hover:scale-105">
@@ -13,10 +13,10 @@ const FeaturesSection: React.FC = () => {
             <Truck size={48} />
           </div>
           <h3 className="text-xl font-semibold text-red-800 mb-2">
-            Envío rápido
+            Fast Shipping
           </h3>
           <p className="text-yellow-700 text-center">
-            Recibe tus productos en tiempo récord, sin costos ocultos.
+            Receive your products in record time, with no hidden fees.
           </p>
         </div>
 
@@ -25,10 +25,10 @@ const FeaturesSection: React.FC = () => {
             <CreditCard size={48} />
           </div>
           <h3 className="text-xl font-semibold text-red-800 mb-2">
-            Pago seguro
+            Secure Payment
           </h3>
           <p className="text-yellow-700 text-center">
-            Disfruta de una experiencia de pago protegida y confiable.
+            Enjoy a protected and reliable payment experience.
           </p>
         </div>
 
@@ -37,10 +37,10 @@ const FeaturesSection: React.FC = () => {
             <Headphones size={48} />
           </div>
           <h3 className="text-xl font-semibold text-red-800 mb-2">
-            Soporte 24/7
+            24/7 Support7
           </h3>
           <p className="text-yellow-700 text-center">
-            Nuestro equipo está disponible siempre para resolver cualquier duda.
+            Our team is always available to resolve any questions.
           </p>
         </div>
       </div>

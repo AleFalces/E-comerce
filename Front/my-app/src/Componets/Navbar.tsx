@@ -77,19 +77,19 @@ const Navbar: React.FC = () => {
             href="/products"
             className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
           >
-            <Package size={18} /> <span>Productos</span>
+            <Package size={18} /> <span>Products</span>
           </Link>
           <Link
             href="/about"
             className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
           >
-            <Info size={18} /> <span>Nosotros</span>
+            <Info size={18} /> <span>About us</span>
           </Link>
           <Link
             href="/cart"
             className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
           >
-            <ShoppingCart size={18} /> <span>Carrito</span>
+            <ShoppingCart size={18} /> <span>Shopping Car</span>
           </Link>
 
           {user ? (
@@ -113,7 +113,7 @@ const Navbar: React.FC = () => {
                     className="flex items-center px-4 py-2 hover:bg-gray-700 text-sm transition-colors duration-300"
                   >
                     <Package size={16} />{" "}
-                    <span className="ml-2">Mis órdenes</span>
+                    <span className="ml-2">My Orders</span>
                   </Link>
                   <button
                     onClick={handleLogout}
