@@ -87,25 +87,25 @@ const CartPage = () => {
 
   const handleClearCart = async () => {
     const confirmed = await confirmAction({
-      title: "¿Vaciar carrito?",
-      text: "Se eliminarán todos los productos del carrito.",
-      confirmButtonText: "Sí, vaciar",
+      title: "Empty Cart?",
+      text: "All products will be removed from the cart.",
+      confirmButtonText: "Yes, empty",
     });
     if (confirmed) {
       clearCart();
-      showSuccess("¡Carrito vacío!");
+      showSuccess("¡Cart is empty!");
     }
   };
 
   const handleDeleteAll = async (id: number, name: string) => {
     const confirmed = await confirmAction({
-      title: `¿Eliminar ${name} del carrito?`,
-      text: `Se eliminarán todos los productos de este tipo del carrito.`,
-      confirmButtonText: "Sí, eliminar",
+      title: `Remove ${name} from the cart?`,
+      text: `All products of this type will be removed from the cart.`,
+      confirmButtonText: "Yes, Remove",
     });
     if (confirmed) {
       removeAllFromCart(id);
-      showSuccess("¡Eliminado correctamente!");
+      showSuccess("¡Successfully removed!");
     }
   };
 

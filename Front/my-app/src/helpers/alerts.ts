@@ -1,10 +1,10 @@
 import Swal from "sweetalert2";
 
 export const confirmAction = async ({
-  title = "¿Estás seguro?",
-  text = "Esta acción no se puede deshacer.",
-  confirmButtonText = "Sí, continuar",
-  cancelButtonText = "Cancelar",
+  title = "Are you sure?",
+  text = "This action cannot be undone.",
+  confirmButtonText = "Yes, continue",
+  cancelButtonText = "Cancel",
   icon = "warning",
 }: {
   title?: string;
@@ -37,7 +37,7 @@ export const showSuccess = (title: string, text = "") => {
     title,
     text,
     icon: "success",
-    confirmButtonText: "OK",
+    confirmButtonText: "Close",
     customClass: {
       confirmButton:
         "bg-amber-600  hover:bg-amber-200 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-amber-300",
@@ -51,7 +51,7 @@ export const showError = (title: string, text = "") => {
     title,
     text,
     icon: "error",
-    confirmButtonText: "OK",
+    confirmButtonText: "Close",
     customClass: {
       confirmButton:
         "bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-amber-300",

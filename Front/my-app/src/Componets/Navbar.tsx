@@ -23,15 +23,15 @@ const Navbar: React.FC = () => {
 
   const handleLogout = async () => {
     const confirmed = await confirmAction({
-      title: "¿Cerrar sesión?",
-      text: "Tendrás que iniciar sesión de nuevo para hacer compras.",
-      confirmButtonText: "Sí, cerrar sesión",
+      title: "¿Log Out?",
+      text: "You will need to log in again to make purchases.",
+      confirmButtonText: "Yes, Log Out",
     });
 
     if (confirmed) {
       logout();
       window.dispatchEvent(new StorageEvent("storage", { key: "user" }));
-      showSuccess("Sesión cerrada con éxito");
+      showSuccess("Session successfully closed");
     }
   };
 

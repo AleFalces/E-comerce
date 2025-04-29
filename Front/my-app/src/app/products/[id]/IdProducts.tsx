@@ -16,7 +16,7 @@ const ProductDetail: React.FC = () => {
     if (typeof id === "string") getProductsById(id).then(setProduct);
   }, [id]);
 
-  if (!product) return <p className="text-center p-6">Cargando...</p>;
+  if (!product) return <p className="text-center p-6">Loading...</p>;
 
   const remainingStock = getRemainingStock(product.id, product.stock);
 
