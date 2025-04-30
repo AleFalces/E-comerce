@@ -89,7 +89,7 @@ const Navbar: React.FC = () => {
             href="/cart"
             className="flex items-center space-x-1 hover:text-amber-200 transition-colors duration-300"
           >
-            <ShoppingCart size={18} /> <span>Shopping Car</span>
+            <ShoppingCart size={18} /> <span>Shopping Cart</span>
           </Link>
 
           {user ? (

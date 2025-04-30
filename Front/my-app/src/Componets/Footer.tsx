@@ -11,7 +11,9 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-900 text-white py-8 mt-8">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-6">
         <div>
-          <h2 className="text-xl font-semibold mb-4">Technologies Used</h2>
+          <h2 className="text-xl text-amber-100 font-semibold mb-4">
+            Technologies Used
+          </h2>
 
           <div className="space-y-4">
             <div>
@@ -64,7 +66,9 @@ const Footer: React.FC = () => {
 
         {/* Contacto */}
         <div>
-          <h2 className="text-xl font-semibold mb-4">Contact</h2>
+          <h2 className="text-xl font-semibold text-amber-100  mb-4">
+            Contact
+          </h2>
           <ul className="space-y-2 text-gray-300 text-sm">
             <li className="flex items-center gap-2 hover:text-amber-200">
               <Linkedin size={16} />
