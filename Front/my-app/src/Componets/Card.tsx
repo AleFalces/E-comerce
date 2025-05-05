@@ -21,24 +21,24 @@ export const Card: React.FC<CardProps> = ({ product }) => {
   };
 
   return (
-    <div className="bg-amber-100 border-4 border-yellow-700 rounded-xl shadow-md p-4 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-sm duration-300">
+    <div className="bg-amber-50  rounded-xl shadow-md p-4 flex flex-col items-center transition-transform hover:scale-105 hover:shadow-sm duration-300">
       <img
         src={product.image}
         alt={product.name}
-        className="w-full h-40 object-cover rounded-xl mb-4"
+        className="border-1 border-yellow-700 w-full h-40 object-cover rounded-xl mb-4"
       />
       <h2 className="text-xl font-semibold text-red-800 mb-2">
         {product.name}
       </h2>
-      <p className="text-base text-yellow-700 mb-1">Price: ${product.price}</p>
-      <p className="text-sm text-red-800 mb-2">{product.category.name}</p>
-      <p className="text-sm text-yellow-700 mb-4">
+      <p className="text-base text-gray-800 mb-1">Price: ${product.price}</p>
+      <p className="text-sm text-gray-800 mb-2">{product.category.name}</p>
+      <p className="text-sm text-gray-800 mb-4">
         Available Stock: {remainingStock}
       </p>
       <div className="flex gap-3 mb-4">
         <button
           onClick={handleAddToCart}
-          className={`px-4 py-2 rounded-xl font-semibold text-amber-100 transition-colors duration-300 ${
+          className={`px-4 py-2 rounded-xl font-semibold text-white transition-colors duration-300 ${
             remainingStock === 0
               ? "bg-gray-400 cursor-not-allowed"
               : "bg-red-800 hover:bg-red-900"
@@ -48,7 +48,7 @@ export const Card: React.FC<CardProps> = ({ product }) => {
         </button>
         <button
           onClick={() => router.push(`/products/${product.id}`)}
-          className="bg-yellow-700  text-amber-100 px-4 py-2 rounded-xl font-semibold hover:bg-yellow-800 transition-colors duration-300"
+          className="bg-yellow-700  text-white px-4 py-2 rounded-xl font-semibold hover:bg-yellow-800 transition-colors duration-300"
         >
           View Details
         </button>

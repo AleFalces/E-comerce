@@ -24,7 +24,7 @@ const UserOrders: React.FC = () => {
   };
 
   return (
-    <div className="p-6 bg-amber-100 min-h-screen overflow-x-hidden">
+    <div className="p-6  min-h-screen overflow-x-hidden">
       <h1 className="text-3xl font-bold text-red-800 mb-6 text-center">
         Mis Órdenes
       </h1>

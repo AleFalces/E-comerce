@@ -22,9 +22,9 @@ export const confirmAction = async ({
     cancelButtonText,
     customClass: {
       confirmButton:
-        "mr-3 bg-amber-800 hover:bg-amber-700 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300",
+        "mr-3 bg-amber-800 hover:bg-amber-700 text-white px-6 py-3 rounded-2xl shadow-md transition-colors duration-300",
       cancelButton:
-        "ml-3 bg-red-900 hover:bg-red-800 text-amber-100 px-6 py-3 rounded-2xl shadow-md transition-colors duration-300",
+        "ml-3 bg-red-900 hover:bg-red-800 text-white px-6 py-3 rounded-2xl shadow-md transition-colors duration-300",
     },
     buttonsStyling: false,
   });

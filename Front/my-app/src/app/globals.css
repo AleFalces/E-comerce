@@ -7,8 +7,8 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  background-color: #f5deb3; /* Fondo crema */
-  color: #333; /* Color de texto neutro */
+  background-color: #f5deb3;
+  color: #333;
   min-height: 100vh;
   scroll-behavior: smooth;
 }

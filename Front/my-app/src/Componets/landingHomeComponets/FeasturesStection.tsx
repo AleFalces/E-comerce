@@ -15,7 +15,7 @@ const FeaturesSection: React.FC = () => {
           <h3 className="text-xl font-semibold text-red-800 mb-2">
             Fast Shipping
           </h3>
-          <p className="text-yellow-700 text-center">
+          <p className="text-gray-800 text-center">
             Receive your products in record time, with no hidden fees.
           </p>
         </div>
@@ -27,7 +27,7 @@ const FeaturesSection: React.FC = () => {
           <h3 className="text-xl font-semibold text-red-800 mb-2">
             Secure Payment
           </h3>
-          <p className="text-yellow-700 text-center">
+          <p className="text-gray-800  text-center">
             Enjoy a protected and reliable payment experience.
           </p>
         </div>
@@ -39,7 +39,7 @@ const FeaturesSection: React.FC = () => {
           <h3 className="text-xl font-semibold text-red-800 mb-2">
             24/7 Support7
           </h3>
-          <p className="text-yellow-700 text-center">
+          <p className="text-gray-800  text-center">
             Our team is always available to resolve any questions.
           </p>
         </div>

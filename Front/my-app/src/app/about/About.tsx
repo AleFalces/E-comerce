@@ -44,7 +44,7 @@ const AboutPage: React.FC = () => {
   ];
 
   return (
-    <main className="p-6 bg-amber-100 min-h-screen">
+    <main className="p-6  min-h-screen">
       <div className="max-w-4xl mx-auto space-y-12">
         {sections.map(({ Icon, title, content }) => (
           <section

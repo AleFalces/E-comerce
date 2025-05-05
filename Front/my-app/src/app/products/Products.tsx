@@ -34,16 +34,16 @@ const Products: React.FC = () => {
       : products.filter((p) => p.category.name === selectedCategory);
 
   return (
-    <div className="p-6 bg-amber-100 min-h-screen">
+    <div className="p-6  min-h-screen">
       <div className="mb-6 mt-4 flex justify-center items-center gap-4">
-        <label htmlFor="category" className="text-red-800 font-semibold">
+        <label htmlFor="category" className="text-red-800  font-semibold">
           Filter by Category:
         </label>
         <select
           id="category"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
-          className="p-2 border-2 border-yellow-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-red-800"
+          className="p-2 border-2 border-yellow-700 rounded-xl focus:outline-none focus:ring-2 bg-white focus:ring-red-800"
         >
           <option value="all">All Categories</option>
           {categories.map((category) => (

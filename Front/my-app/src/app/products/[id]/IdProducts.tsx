@@ -21,25 +21,25 @@ const ProductDetail: React.FC = () => {
   const remainingStock = getRemainingStock(product.id, product.stock);
 
   return (
-    <div className="p-6 bg-amber-100 min-h-screen flex flex-col lg:flex-row gap-8">
+    <div className="p-6  min-h-screen flex flex-col lg:flex-row gap-8">
       <div className="flex-1 flex justify-center items-center">
         <img
           src={product.image}
           alt={product.name}
-          className="w-full max-w-xl rounded-xl shadow-md transform transition-transform duration-700 ease-in-out hover:scale-105"
+          className="w-full max-w-xl rounded-xl shadow-md border-1 border-yellow-700 transform transition-transform duration-700 ease-in-out hover:scale-105"
         />
       </div>
 
       <div className="flex-1 flex flex-col justify-start">
-        <h1 className="text-4xl font-bold text-red-800 mb-4">{product.name}</h1>
-        <p className="text-base text-yellow-700 mb-6">{product.description}</p>
-        <p className="text-2xl font-semibold text-yellow-700 mb-2">
+        <h1 className="text-5xl font-bold text-red-800 mb-4">{product.name}</h1>
+        <p className="text-2xl text-gray-800 mb-6">{product.description}</p>
+        <p className="text-3xl font-semibold text-yellow-700 mb-2">
           Price: ${product.price}
         </p>
-        <p className="text-sm text-red-800 mb-4">
+        <p className="text-base text-gray-800 mb-4">
           Category: {product.category.name}
         </p>
-        <p className="text-sm text-yellow-700 mb-6">
+        <p className="text-base text-gray-800 mb-6">
           Available Stock: {remainingStock}
         </p>
 
