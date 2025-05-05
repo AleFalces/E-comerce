@@ -8,7 +8,7 @@ const CallToActionSection: React.FC = () => {
 
   return (
     <section className="py-12 px-4 text-center bg-red-800">
-      <h2 className="text-3xl font-bold text-amber-100 flex items-center justify-center gap-2 mb-4">
+      <h2 className="text-3xl font-bold text-white flex items-center justify-center gap-2 mb-4">
         <Rocket size={24} />
         Ready to get started?
       </h2>
