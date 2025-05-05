@@ -25,6 +25,8 @@ export const Card: React.FC<CardProps> = ({ product }) => {
       <img
         src={product.image}
         alt={product.name}
+        loading="lazy"
+        decoding="async"
         className="border-1 border-yellow-700 w-full h-40 object-cover rounded-xl mb-4"
       />
       <h2 className="text-xl font-semibold text-red-800 mb-2">

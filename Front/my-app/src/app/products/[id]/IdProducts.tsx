@@ -26,6 +26,8 @@ const ProductDetail: React.FC = () => {
         <img
           src={product.image}
           alt={product.name}
+          loading="lazy"
+          decoding="async"
           className="w-full max-w-xl rounded-xl shadow-md border-1 border-yellow-700 transform transition-transform duration-700 ease-in-out hover:scale-105"
         />
       </div>

@@ -18,9 +18,11 @@ const TestimonialsSection: React.FC = () => {
             <img
               src={testimonial.avatar}
               alt={testimonial.name}
+              loading="lazy"
+              decoding="async"
               className="w-16 h-16 rounded-full mb-4 ring-2 ring-red-800"
             />
-            <p className="text-red-800 mb-4">{testimonial.message}</p>
+            <p className="text-gray-800 mb-4">{testimonial.message}</p>
             <p className="font-semibold text-red-900 mb-1">
               {testimonial.name}
             </p>

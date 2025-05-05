@@ -4,7 +4,7 @@ import { Truck, CreditCard, Headphones } from "lucide-react";
 const FeaturesSection: React.FC = () => {
   return (
     <section className="py-16 px-4 bg-amber-100">
-      <h2 className="text-3xl font-bold text-red-800 text-center mb-12">
+      <h2 className="text-3xl font-bold text-gray-800 text-center mb-12">
         Why Choose Us
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">

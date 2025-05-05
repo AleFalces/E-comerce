@@ -143,6 +143,8 @@ const CartPage = () => {
                   <img
                     src={product.image}
                     alt={product.name}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full border-1 border-yellow-700  h-48 object-cover rounded-2xl mb-4"
                   />
                   <h2 className="text-lg font-semibold  text-red-800mb-2">

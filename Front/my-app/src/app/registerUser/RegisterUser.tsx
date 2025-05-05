@@ -42,7 +42,7 @@ const RegisterUser: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-amber-100 p-6">
+    <div className="flex justify-center items-center min-h-screen  p-6">
       <form
         onSubmit={handleSubmit}
         noValidate
@@ -164,7 +164,7 @@ const RegisterUser: React.FC = () => {
 
         <button
           type="submit"
-          className="w-full py-3 bg-red-800 text-amber-100 font-semibold rounded-xl shadow-md hover:bg-red-900 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full py-3 bg-red-800 text-white font-semibold rounded-xl shadow-md hover:bg-red-900 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           Submit
         </button>
