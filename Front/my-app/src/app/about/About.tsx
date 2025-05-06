@@ -38,7 +38,7 @@ const AboutPage: React.FC = () => {
         `Whether you're a small business, a startup, or an individual with an idea, I’d love to hear from you.`,
         `📍 Based in Córdoba, Argentina – available for remote work worldwide.`,
         `✉️ Email: alefalces@gmail.com`,
-        `🔗 LinkedIn: https://www.linkedin.com/in/alexis-falces-95b892252/`,
+        `🔗 LinkedIn: https://www.linkedin.com/in/alefalces/`,
       ],
     },
   ];
